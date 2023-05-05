@@ -20,12 +20,12 @@ export default function FilterEmpalme() {
                     <CardTitle>Tensión máxima</CardTitle>
                     <CardContent>
                         <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(70px,1fr)' }}>
-                            {!maxVoltages && <>
-                                <SkeletonChip />
-                                <SkeletonChip />
-                                <SkeletonChip />
-                                <SkeletonChip />
-                            </>}
+                            {!maxVoltages && <div className="flex gap-2">
+                                <SkeletonChip width="70px" />
+                                <SkeletonChip width="70px" />
+                                <SkeletonChip width="70px" />
+                                <SkeletonChip width="70px" />
+                            </div>}
                             {maxVoltages?.map(v => <Chip selected={maxVoltage === v} onClick={() => setMaxVoltage(v)}>{v}</Chip>)}
                         </div>
                     </CardContent>
@@ -36,12 +36,12 @@ export default function FilterEmpalme() {
                     <CardTitle>Cantidad de conductores</CardTitle>
                     <CardContent>
                         <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(70px,1fr)' }}>
-                            {!maxConductorsQuantities && <>
-                                <SkeletonChip />
-                                <SkeletonChip />
-                                <SkeletonChip />
-                                <SkeletonChip />
-                            </>}
+                            {!maxConductorsQuantities && <div className="flex gap-2">
+                                <SkeletonChip width="70px" />
+                                <SkeletonChip width="70px" />
+                                <SkeletonChip width="70px" />
+                                <SkeletonChip width="70px" />
+                            </div>}
                             {maxConductorsQuantities?.map(v => <Chip selected={conductorsQuantity === v} onClick={() => setConductorsQuantity(v)}>{v}</Chip>)}
                         </div>
                     </CardContent>
@@ -52,10 +52,10 @@ export default function FilterEmpalme() {
                     <CardTitle>Tipo de pantalla</CardTitle>
                     <CardContent>
                         <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(120px,1fr)' }}>
-                            {!shieldTypes && <>
-                                <SkeletonChip />
-                                <SkeletonChip />
-                            </>}
+                            {!shieldTypes && <div className="flex gap-2">
+                                <SkeletonChip width="140px" />
+                                <SkeletonChip width="140px" />
+                            </div>}
                             {shieldTypes?.map(v => <Chip selected={shieldType === v} onClick={() => setShieldType(v)}>{v}</Chip>)}
                         </div>
                     </CardContent>
