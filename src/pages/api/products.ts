@@ -1,6 +1,10 @@
-import type { EndpointHandler, EndpointOutput } from 'astro'
+import type { APIRoute, EndpointHandler, EndpointOutput } from 'astro'
 
-export async function get({ params, request }: EndpointHandler): Promise<EndpointOutput> {
+export const get: APIRoute = async function get({ params, request, url, clientAddress, generator, cookies, props, redirect, site }) {
+    // Ex: /api/product/:id -> params.id
+    console.log(params)
+    // url -> url.hred, url.pathname, etc...
+    console.log(url.searchParams)
     return {
         body: JSON.stringify([
             {
