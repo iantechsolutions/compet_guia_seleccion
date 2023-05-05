@@ -1,9 +1,11 @@
 ---
-import Selector from '../components/Selector';
+import TitleBar from '../components/TitleBar.astro';
 import Layout from '../layouts/Layout.astro';
+
+export const prerender = true
+
 ---
 
 <Layout title="Welcome to Astro.">
-	<h1>Guía de selección</h1>
-	<Selector client:load />
+	<TitleBar />
 </Layout>
