@@ -20,10 +20,32 @@ export const productSchema = z.object({
         const xmlParsed = parser.parse(value)
         return adittionalFieldsSchema.parse(xmlParsed).COMPONENTES_ADICIONALES
     })
+}).transform((value) => {
+    return {
+        id: value.productID,
+        name: value.Name,
+        params: {
+            mainCat: value.CamposAdicionales.CAT_PRINCIPAL,
+            maxVoltage: value.CamposAdicionales.TENSION_MAX,
+            conductorsQuantity: value.CamposAdicionales.CANT_CONDUCTORES,
+            sectionMin: value.CamposAdicionales.SECCION_MIN,
+            sectionMax: value.CamposAdicionales.SECCION_MAX,
+        }
+    }
 })
 
-export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
+export const productsSchema = z.array(productSchema)
 
 export type Product = z.infer<typeof productSchema>
+export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
 
-export const productsSchema = z.array(productSchema)
+export const productsEndpointQuerySchema = z.object({
+    max_voltage_left: z.string().transform((value) => parseInt(value)).optional(),
+    max_voltage_right: z.string().transform((value) => parseInt(value)).optional(),
+    conductors_quantity_left: z.string().transform((value) => parseInt(value)).optional(),
+    conductors_quantity_right: z.string().transform((value) => parseInt(value)).optional(),
+    section_min_left: z.string().transform((value) => parseInt(value)).optional(),
+    section_min_right: z.string().transform((value) => parseInt(value)).optional(),
+    section_max_left: z.string().transform((value) => parseInt(value)).optional(),
+    section_max_right: z.string().transform((value) => parseInt(value)).optional(),
+})
