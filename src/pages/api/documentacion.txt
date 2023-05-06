@@ -1,5 +1,1 @@
-/api/tension_max?tension_max=36 -> devuelve todos los posibles conductores a partir de tension_max=36kv
-
-/api/number_conductors?tension_max=36&number_conductors=1 devuelve ??
-
-/api/test?cat_principal=Empalme&tension_max=36&cant_conductores=1&seccion=80 devuelve el producto
+/api/empalme?max_voltage=30&section_left=20&section_right=20&conductors=1

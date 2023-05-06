@@ -14,14 +14,26 @@ export const get: APIRoute = async function get({ url }) {
 
   // Parse products database and convert it to the correct type
   const products = productsSchema.parse(JSON.parse(data));
-
-  // Filter products based on filters
-  const filterProducts = products.filter(
-    (item) =>
-      !filters.max_voltage || filters.max_voltage <= item.params.maxVoltage
+  const maxSection = Math.max(
+    filters.section_left ?? 0,
+    filters.section_right ?? 0
   );
+  const minSection = Math.min(
+    filters.section_left ?? 0,
+    filters.section_right ?? 0
+  );
+  // Filter products based on filters
+  const filterProducts = products.filter((item) => {
+    return (
+      item.params.mainCat === "Empalme" &&
+      (!filters.max_voltage || filters.max_voltage <= item.params.maxVoltage) &&
+      maxSection <= item.params.sectionMax &&
+      minSection >= item.params.sectionMin &&
+      filters.conductors === item.params.conductorsQuantity
+    );
+  });
 
   return {
-    body: JSON.stringify(query),
+    body: JSON.stringify(filterProducts),
   };
 };

@@ -40,12 +40,8 @@ export type Product = z.infer<typeof productSchema>
 export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
 
 export const productsEndpointQuerySchema = z.object({
-    max_voltage_left: z.string().transform((value) => parseInt(value)).optional(),
-    max_voltage_right: z.string().transform((value) => parseInt(value)).optional(),
-    conductors_quantity_left: z.string().transform((value) => parseInt(value)).optional(),
-    conductors_quantity_right: z.string().transform((value) => parseInt(value)).optional(),
-    section_min_left: z.string().transform((value) => parseInt(value)).optional(),
-    section_min_right: z.string().transform((value) => parseInt(value)).optional(),
-    section_max_left: z.string().transform((value) => parseInt(value)).optional(),
-    section_max_right: z.string().transform((value) => parseInt(value)).optional(),
+    max_voltage: z.string().transform((value) => parseInt(value)).optional(),
+    conductors: z.string().transform((value) => parseInt(value)).optional(),
+    section_right: z.string().transform((value) => parseInt(value)).optional(),
+    section_left: z.string().transform((value) => parseInt(value)).optional(),
 })
