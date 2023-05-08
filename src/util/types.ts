@@ -45,3 +45,27 @@ export const productsEndpointQuerySchema = z.object({
     section_right: z.string().transform((value) => parseInt(value)).optional(),
     section_left: z.string().transform((value) => parseInt(value)).optional(),
 })
+
+export const connectionFilterParameterDefinitionSchema = z.object({
+    // Internal identification (not readable by the user), ex: max_voltage
+    key: z.string(),
+    // Title
+    title: z.string(),
+    // Optional description
+    description: z.string().optional().nullable(),
+    // Example: kV, m, kg
+    unit: z.string().optional().nullable(),
+})
+
+export const connectionFiltersParametersDefinitionsSchema = z.object({
+    // Apply to the connection itslef (both conductors)
+    single: z.array(connectionFilterParameterDefinitionSchema),
+    // Apply separately to each side of the connection
+    multiple: z.array(connectionFilterParameterDefinitionSchema),
+})
+
+export const connectionFiltersParametersValuesSchema = z.map(z.string(), z.array(z.string().or(z.number())))
+
+export type ConnectionFilterParameterDefinition = z.infer<typeof connectionFilterParameterDefinitionSchema>
+export type ConnectionFiltersParametersDefinitions = z.infer<typeof connectionFiltersParametersDefinitionsSchema>
+export type ConnectionFiltersParametersValues = z.infer<typeof connectionFiltersParametersValuesSchema>

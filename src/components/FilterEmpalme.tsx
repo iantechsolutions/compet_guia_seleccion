@@ -1,16 +1,13 @@
-import { useConductorsQuantities, useMaxVoltages, useShieldTypes } from "../client/hooks";
+import { useDefinitionsAndValues } from "../client/hooks";
 import Card, { CardContent, CardTitle } from "./Card";
 import { Chip, SkeletonChip } from "./Chip";
 import { useState } from 'preact/hooks'
 
 export default function FilterEmpalme() {
 
-    const [maxVoltages, error1] = useMaxVoltages();
-    const [maxConductorsQuantities, error2] = useConductorsQuantities();
-    const [shieldTypes, error3] = useShieldTypes()
+    const [definitionsAndValues, error1] = useDefinitionsAndValues();
 
-    const [maxVoltage, setMaxVoltage] = useState<string | null>(null);
-    const [conductorsQuantity, setConductorsQuantity] = useState<string | null>(null);
+
     const [shieldType, setShieldType] = useState<string | null>(null);
 
     return (

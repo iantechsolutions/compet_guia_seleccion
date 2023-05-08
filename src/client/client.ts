@@ -1,28 +1,26 @@
+import { z } from "zod";
+import { ConnectionFilterParameterDefinition, connectionFiltersParametersDefinitionsSchema, connectionFiltersParametersValuesSchema } from "../util/types";
+
 export class ApiClient {
+    async getFiltersAndValues() {
+        const { definitions, values } = z.object({
+            definitions: connectionFiltersParametersDefinitionsSchema,
+            values: connectionFiltersParametersValuesSchema,
+        }).parse(await fetch('/api/filters').then(r => r.json()))
 
-    async getMaxVoltages(): Promise<string[]> {
-        return [
-            '8 kV',
-            '15 kV',
-            '24 kV',
-            '36 kV',
-        ]
-    }
+        function mapDefinitionWithValue(definition: ConnectionFilterParameterDefinition) {
+            const definitionValues = values.get(definition.key) || []
 
-    async getConductorsQuantities(): Promise<string[]> {
-        return [
-            '1',
-            '2',
-            '3',
-            '4',
-        ]
-    }
+            return {
+                ...definition,
+                values: definitionValues.map(value => {
+                    label: definition.unit ? `${value} ${definition.unit}` : value.toString()
+                    value: value
+                })
+            }
+        }
 
-    async getShiledTypes(): Promise<string[]> {
-        return [
-            'Cinta',
-            'Alambre',
-        ]
+        return definitions.single.map(mapDefinitionWithValue)
     }
 
     static instance = new ApiClient();
