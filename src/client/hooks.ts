@@ -19,8 +19,8 @@ export function useDefinitionsAndValues() {
 
 export function useFiltersValues() {
     const [filtersValues, setFiltersValues] = useState<FiltersValues>({
-        multiple: [],
-        single: {},
+        multiple: [], // ex: [{ max_voltage: 8 }, { max_voltage: 15 }] // indexes: 0 = left, 1 = right
+        single: {}, // ex: { max_voltage: 8 }
     })
 
     function setSingleValue(key: string, value: string | number | null | undefined) {
