@@ -64,8 +64,16 @@ export const connectionFiltersParametersDefinitionsSchema = z.object({
     multiple: z.array(connectionFilterParameterDefinitionSchema),
 })
 
-export const connectionFiltersParametersValuesSchema = z.map(z.string(), z.array(z.string().or(z.number())))
+export const connectionFiltersParametersValuesSchema = z.record(z.string(), z.array(z.string().or(z.number())))
 
 export type ConnectionFilterParameterDefinition = z.infer<typeof connectionFilterParameterDefinitionSchema>
 export type ConnectionFiltersParametersDefinitions = z.infer<typeof connectionFiltersParametersDefinitionsSchema>
 export type ConnectionFiltersParametersValues = z.infer<typeof connectionFiltersParametersValuesSchema>
+
+
+export const filtersValuesSchema = z.object({
+    single: z.record(z.string(), z.string().or(z.number())),
+    multiple: z.array(z.record(z.string(), z.string().or(z.number()))),
+})
+
+export type FiltersValues = z.infer<typeof filtersValuesSchema>

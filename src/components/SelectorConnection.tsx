@@ -10,14 +10,7 @@ export default function Selector() {
                     <div class="h-36 flex justify-center ">
                         <img src="/connection_left.png" className="h-36" />
                     </div>
-                    <Tabs
-                        titles={["Izquierda", "Derecha"]}
-                    >
-                        {[
-                            <FilterEmpalme />,
-                            <FilterEmpalme />
-                        ]}
-                    </Tabs>
+                    <FilterEmpalme />
                 </div>
                 <div>
                     <div className="text-center text-gray-600 font-semibold py-2 cursor-pointer relative">

@@ -25,19 +25,11 @@ export const get: APIRoute = async function get({ url }) {
         ]
     }
 
-    const values: ConnectionFiltersParametersValues = new Map()
-
-    values.set('max_voltage', [
-        8, 15, 24, 36
-    ])
-
-    values.set('conductors_quantity', [
-        1, 2, 3, 4
-    ])
-
-    values.set('shield_type', [
-        'Cinta', 'Alambre',
-    ])
+    const values: ConnectionFiltersParametersValues = {
+        max_voltage: [8, 15, 24, 36],
+        conductors_quantity: [1, 2, 3, 4],
+        shield_type: ['Cinta', 'Alambre'],
+    }
 
     return {
         body: JSON.stringify({
