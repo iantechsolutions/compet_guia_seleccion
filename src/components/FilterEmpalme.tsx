@@ -1,30 +1,37 @@
 import { useDefinitionsAndValues, useFiltersValues } from "../client/hooks";
 import Card, { CardContent, CardTitle } from "./Card";
 import { Chip, SkeletonChip } from "./Chip";
-import { useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import Tabs from "./Tabs";
 import TabButton from "./TabButton";
+import type { FiltersValues } from "../util/types";
 
-export default function FilterEmpalme() {
+interface Props {
+    onFiltersValuesChange: (filtersValues: FiltersValues) => unknown
+}
+
+export default function FilterEmpalme({ onFiltersValuesChange }: Props) {
 
     const [definitionsAndValues, error] = useDefinitionsAndValues();
 
     const { filtersValues, setSingleValue, setMultipleValue } = useFiltersValues()
+
+    useEffect(() => {
+        onFiltersValuesChange(filtersValues)
+    }, [filtersValues, onFiltersValuesChange])
 
     function CardsList(props: { filters: NonNullable<typeof definitionsAndValues>['multiple'], setValue: (key: string, value: string | number | undefined | null) => unknown, values: { [key: string]: string | number } }) {
         return <>{props.filters?.map(({ key, title, values, unit }) => <div class="mb-3">
             <Card>
                 <CardTitle>{title}</CardTitle>
                 <CardContent>
-                    <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(70px,1fr)' }}>
+                    <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(250px,1fr)' }}>
                         {values.map(value => <Chip selected={value.value === props.values[key]} onClick={() => props.setValue(key, value.value)}>{value.label}</Chip>)}
                     </div>
                 </CardContent>
             </Card>
         </div>)}</>
     }
-
-    console.log(filtersValues)
 
     return (<div>
         <TabButton

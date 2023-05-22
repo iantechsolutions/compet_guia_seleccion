@@ -1,34 +1,59 @@
 import type { APIRoute } from "astro";
-import type { ConnectionFiltersParametersDefinitions, ConnectionFiltersParametersValues } from "../../util/types";
-import { map } from "zod";
+import { productsSchema, type ConnectionFiltersParametersDefinitions, type ConnectionFiltersParametersValues, Product } from "../../util/types";
+import fs from "fs/promises";
 
 export const get: APIRoute = async function get({ url }) {
 
     const definitions: ConnectionFiltersParametersDefinitions = {
         single: [
             {
-                key: 'max_voltage',
-                title: 'Tensión máxima',
-                description: 'Máxima tensión soportada',
-                unit: 'kV'
+                key: 'CA_TECNOLOGA_PRINCIPAL',
+                title: 'Tecnología principal',
             },
         ],
         multiple: [
             {
-                key: 'conductors_quantity',
-                title: 'Conductors quantity',
-            },
-            {
-                key: 'shield_type',
-                title: 'Tipo de pantalla',
+                key: 'CA_NIVEL_DE_TENSIN',
+                title: 'Rango de tensión',
+                description: 'Máxima tensión soportada',
             },
         ]
     }
 
-    const values: ConnectionFiltersParametersValues = {
-        max_voltage: [8, 15, 24, 36],
-        conductors_quantity: [1, 2, 3, 4],
-        shield_type: ['Cinta', 'Alambre'],
+
+
+    // Read products database
+    const data = await fs.readFile("./src/pages/api/data.json", "utf-8");
+
+    let products: Product[] = []
+
+    try {
+        // Parse products database and convert it to the correct type
+        products = productsSchema.parse(JSON.parse(data));
+    } catch (error) {
+        console.log(error)
+        return {
+            status: 500,
+            body: JSON.stringify(error),
+        }
+    }
+
+    const values: ConnectionFiltersParametersValues = {}
+
+    for(const product of products) {
+        for(const key in product.params) {
+            const value = product.params[key]
+
+            if(value === null || value === undefined || value === '') continue
+
+            if(!values[key]) {
+                values[key] = []
+            }
+
+            if(!values[key].includes(value)) {
+                values[key].push(value)
+            }
+        }
     }
 
     return {

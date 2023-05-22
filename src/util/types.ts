@@ -4,33 +4,33 @@ import { XMLParser } from "fast-xml-parser"
 const parser = new XMLParser();
 
 export const adittionalFieldsSchema = z.object({
-    COMPONENTES_ADICIONALES: z.object({
-        CAT_PRINCIPAL: z.string(),
-        TENSION_MAX: z.number(),
-        CANT_CONDUCTORES: z.number(),
-        SECCION_MIN: z.number(),
-        SECCION_MAX: z.number()
-    })
+    CAMPOS_ADICIONALES: z.record(z.string().or(z.number()))
 })
 
 export const productSchema = z.object({
-    productID: z.string(),
-    Name: z.string(),
-    CamposAdicionales: z.string().transform((value) => {
+    COD_ARTICU: z.string(),
+    DESC_ADIC: z.string().optional(),
+    DESCRIPCIO: z.string().optional(),
+    TEXTO: z.string(),
+    FECHA_MODI: z.string().optional(),
+    "Incluido en Guia": z.string(),
+    CAMPOS_ADICIONALES: z.string().optional().transform((value) => {
+        if(!value) return {}
         const xmlParsed = parser.parse(value)
-        return adittionalFieldsSchema.parse(xmlParsed).COMPONENTES_ADICIONALES
+        return adittionalFieldsSchema.parse(xmlParsed).CAMPOS_ADICIONALES
     })
 }).transform((value) => {
+    const additionalFields = value.CAMPOS_ADICIONALES
+
+    for(const key in additionalFields) {
+        additionalFields[key] = additionalFields[key].toString()
+    }
+
     return {
-        id: value.productID,
-        name: value.Name,
-        params: {
-            mainCat: value.CamposAdicionales.CAT_PRINCIPAL,
-            maxVoltage: value.CamposAdicionales.TENSION_MAX,
-            conductorsQuantity: value.CamposAdicionales.CANT_CONDUCTORES,
-            sectionMin: value.CamposAdicionales.SECCION_MIN,
-            sectionMax: value.CamposAdicionales.SECCION_MAX,
-        }
+        code: value.COD_ARTICU,
+        name: value.DESCRIPCIO,
+        description: value.TEXTO,
+        params: additionalFields
     }
 })
 
@@ -38,13 +38,6 @@ export const productsSchema = z.array(productSchema)
 
 export type Product = z.infer<typeof productSchema>
 export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
-
-export const productsEndpointQuerySchema = z.object({
-    max_voltage: z.string().transform((value) => parseInt(value)).optional(),
-    conductors: z.string().transform((value) => parseInt(value)).optional(),
-    section_right: z.string().transform((value) => parseInt(value)).optional(),
-    section_left: z.string().transform((value) => parseInt(value)).optional(),
-})
 
 export const connectionFilterParameterDefinitionSchema = z.object({
     // Internal identification (not readable by the user), ex: max_voltage
@@ -77,3 +70,13 @@ export const filtersValuesSchema = z.object({
 })
 
 export type FiltersValues = z.infer<typeof filtersValuesSchema>
+
+export const productsEndpointQuerySchema = z.object({
+    filters: z.string().optional().transform((value) => {
+        if(!value) return {
+            single: {},
+            multiple: []
+        } as FiltersValues
+        return filtersValuesSchema.parse(JSON.parse(value))
+    })
+})
