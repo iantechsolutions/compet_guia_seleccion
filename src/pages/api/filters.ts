@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
-import { productsSchema, type ConnectionFiltersParametersDefinitions, type ConnectionFiltersParametersValues, Product } from "../../util/types";
-import fs from "fs/promises";
+import { readProducts } from "../../util/server";
+import type { ConnectionFiltersParametersDefinitions, ConnectionFiltersParametersValues, Product } from "../../util/types";
 
 export const get: APIRoute = async function get({ url }) {
 
@@ -21,15 +21,11 @@ export const get: APIRoute = async function get({ url }) {
     }
 
 
-
-    // Read products database
-    const data = await fs.readFile("./src/pages/api/data.json", "utf-8");
-
     let products: Product[] = []
 
     try {
         // Parse products database and convert it to the correct type
-        products = productsSchema.parse(JSON.parse(data));
+        products = await readProducts()
     } catch (error) {
         console.log(error)
         return {

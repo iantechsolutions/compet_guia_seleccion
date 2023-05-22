@@ -1,1 +1,0 @@
-/api/empalme?max_voltage=30&section_left=20&section_right=20&conductors=1

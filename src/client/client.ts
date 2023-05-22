@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ConnectionFilterParameterDefinition, connectionFiltersParametersDefinitionsSchema, connectionFiltersParametersValuesSchema } from "../util/types";
+import { ConnectionFilterParameterDefinition, FiltersValues, Product, connectionFiltersParametersDefinitionsSchema, connectionFiltersParametersValuesSchema } from "../util/types";
 
 export class ApiClient {
     async getFiltersAndValues() {
@@ -24,6 +24,14 @@ export class ApiClient {
             single: definitions.single.map(mapDefinitionWithValue),
             multiple: definitions.multiple.map(mapDefinitionWithValue),
         }
+    }
+
+    async getProducts(filtersValues: FiltersValues) {
+        const response = await fetch(`/api/products/connector?filters=${encodeURIComponent(JSON.stringify(filtersValues))}`)
+
+        const data = await response.json()
+
+        return data as Product[]
     }
 
     static instance = new ApiClient();

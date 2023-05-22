@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks'
 import { apiClient } from './client'
-import type { FiltersValues } from '../util/types'
+import type { FiltersValues, Product } from '../util/types'
 
 export function useDefinitionsAndValues() {
     const [definitionsAndValues, setDefinitionsAndValues] = useState<
@@ -15,6 +15,16 @@ export function useDefinitionsAndValues() {
     }, [])
 
     return [definitionsAndValues, error]
+}
+
+export function useProducts(filtersValues: FiltersValues) {
+    const [products, setProducts] = useState<Product[]>([])
+
+    useEffect(() => {
+        apiClient.getProducts(filtersValues).then(setProducts)
+    }, [filtersValues])
+
+    return products
 }
 
 export function useFiltersValues() {
