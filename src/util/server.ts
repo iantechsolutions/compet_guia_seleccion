@@ -1,11 +1,11 @@
 import fs from "fs/promises";
-import { FiltersValues, Product, productsSchema } from "./types";
+import { Product, dataStructureDefinitionSchema, productsSchema } from "./types";
 
 let savedProducts: Product[] | null = null
 
-export async function readProducts(filtersValues?: FiltersValues) {
+export async function readProducts() {
     if(savedProducts != null) {
-        return filterProducts(savedProducts, filtersValues)
+        return savedProducts
     }
 
     // Read products database
@@ -16,56 +16,17 @@ export async function readProducts(filtersValues?: FiltersValues) {
 
     savedProducts = products
 
-    return filterProducts(products, filtersValues)
+    return products
 }
 
-function filterProducts(products: Product[], filters?: FiltersValues) {
-    if(!filters) return products
+export async function readFilters() {
+    const data = await fs.readFile("./src/pages/api/filters.json", "utf-8");
 
-    const allFilters = getAllFilters(filters)
-
-    const filteredProducts = products.filter((product) => {
-        for (const key in allFilters) {
-            const value = allFilters[key]
-
-            if (!value.includes(product.params[key])) {
-                return false
-            }
-        }
-
-        return true
-    })
-
-    return filteredProducts
-}
-
-interface Filters { [key: string]: (string | number)[] }
-
-function getAllFilters(filters: FiltersValues) {
-    const allFilters: Filters = {}
-
-    for (const key in filters.single) {
-        const value = filters.single[key]
-
-        if (!allFilters[key]) {
-            allFilters[key] = []
-        }
-
-        allFilters[key].push(value)
+    try {
+        const filtersDefinition = dataStructureDefinitionSchema.parse(JSON.parse(data))
+        return filtersDefinition
+    } catch (error) {
+        console.log(error)
+        throw error
     }
-
-    // Do the same with multiple filters
-    for (const params of filters.multiple) {
-        for (const key in params) {
-            const value = params[key]
-
-            if (!allFilters[key]) {
-                allFilters[key] = []
-            }
-
-            allFilters[key].push(value)
-        }
-    }
-
-    return allFilters
 }

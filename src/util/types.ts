@@ -15,14 +15,14 @@ export const productSchema = z.object({
     FECHA_MODI: z.string().optional(),
     "Incluido en Guia": z.string(),
     CAMPOS_ADICIONALES: z.string().optional().transform((value) => {
-        if(!value) return {}
+        if (!value) return {}
         const xmlParsed = parser.parse(value)
         return adittionalFieldsSchema.parse(xmlParsed).CAMPOS_ADICIONALES
     })
 }).transform((value) => {
     const additionalFields = value.CAMPOS_ADICIONALES
 
-    for(const key in additionalFields) {
+    for (const key in additionalFields) {
         additionalFields[key] = additionalFields[key].toString()
     }
 
@@ -39,44 +39,115 @@ export const productsSchema = z.array(productSchema)
 export type Product = z.infer<typeof productSchema>
 export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
 
-export const connectionFilterParameterDefinitionSchema = z.object({
-    // Internal identification (not readable by the user), ex: max_voltage
-    key: z.string(),
-    // Title
-    title: z.string(),
-    // Optional description
-    description: z.string().optional().nullable(),
-    // Example: kV, m, kg
-    unit: z.string().optional().nullable(),
+// Checkbox group filter
+export const filterDefinitionValueCheckboxSchema = z.object({
+    label: z.string(),
+    value: z.string(),
+    type: z.literal('checkbox')
 })
 
-export const connectionFiltersParametersDefinitionsSchema = z.object({
-    // Apply to the connection itslef (both conductors)
-    single: z.array(connectionFilterParameterDefinitionSchema),
-    // Apply separately to each side of the connection
-    multiple: z.array(connectionFilterParameterDefinitionSchema),
+export const filterDefinitionCheckboxSchema = z.object({
+    type: z.literal('checkbox-group'),
+    label: z.string(),
+    name: z.string(),
+    values: z.array(filterDefinitionValueCheckboxSchema)
 })
 
-export const connectionFiltersParametersValuesSchema = z.record(z.string(), z.array(z.string().or(z.number())))
-
-export type ConnectionFilterParameterDefinition = z.infer<typeof connectionFilterParameterDefinitionSchema>
-export type ConnectionFiltersParametersDefinitions = z.infer<typeof connectionFiltersParametersDefinitionsSchema>
-export type ConnectionFiltersParametersValues = z.infer<typeof connectionFiltersParametersValuesSchema>
-
-
-export const filtersValuesSchema = z.object({
-    single: z.record(z.string(), z.string().or(z.number())),
-    multiple: z.array(z.record(z.string(), z.string().or(z.number()))),
+// Select filter
+export const filterDefinitionValueSelectSchema = z.object({
+    label: z.string(),
+    value: z.string(),
 })
 
-export type FiltersValues = z.infer<typeof filtersValuesSchema>
-
-export const productsEndpointQuerySchema = z.object({
-    filters: z.string().optional().transform((value) => {
-        if(!value) return {
-            single: {},
-            multiple: []
-        } as FiltersValues
-        return filtersValuesSchema.parse(JSON.parse(value))
-    })
+export const filterDefinitionSelectSchema = z.object({
+    type: z.literal('select'),
+    label: z.string(),
+    name: z.string(),
+    values: z.array(filterDefinitionValueSelectSchema)
 })
+
+// Row
+export const filterDefinitionRowSchema = z.object({
+    type: z.literal('row'),
+    label: z.string(), // 
+    columns: z.number(),
+    // Each Tabs contains a group of filters
+    rowdata: z.array(z.array(filterDefinitionCheckboxSchema.or(filterDefinitionSelectSchema))),
+})
+
+
+// Group tabs sheet
+export const filterDefinitionTabsGroupTabSchema = z.object({
+    label: z.string(),
+    value: z.string(),
+    selected: z.boolean().optional(),
+})
+
+export const filterDefinitionTabsGroupSchema = z.object({
+    type: z.literal('grouptabsheet'),
+    label: z.string(), // 
+    // Each Tabs contains a group of filters
+    tabsdata: z.array(z.array(filterDefinitionCheckboxSchema.or(filterDefinitionSelectSchema).or(filterDefinitionRowSchema))),
+    // Tab names are defined here
+    values: z.array(filterDefinitionTabsGroupTabSchema)
+})
+
+export const dataStructureDefinitionSchema = z.array(filterDefinitionTabsGroupSchema.or(filterDefinitionCheckboxSchema.or(filterDefinitionSelectSchema).or(filterDefinitionRowSchema)))
+
+export type RawDataStructureDefinition = z.infer<typeof dataStructureDefinitionSchema>
+
+// ---> Transformed filters (see filters.ts)
+
+// Checkbox (can choose one or multiple values)
+export const checkboxFilterSchema = z.object({
+    type: z.literal('checkbox'),
+    label: z.string(),
+    code: z.string(),
+    multiple: z.boolean(),
+    values: z.array(z.object({
+        label: z.string(),
+        value: z.string(),
+    }))
+})
+
+// Select (can choose only one value)
+export const selectFilterSchema = z.object({
+    type: z.literal('select'),
+    label: z.string(),
+    code: z.string(),
+    values: z.array(z.object({
+        label: z.string(),
+        value: z.string(),
+    }))
+})
+
+// Multiple filters (checkboxes and selects)
+export const filterSubgroupGroupSchema = z.object({
+    label: z.string(),
+    description: z.string().optional(),
+    filters: z.array(checkboxFilterSchema.or(selectFilterSchema)),
+})
+
+// Group of subgroups of filters
+export const filterGroupSchema = z.object({
+    label: z.string(),
+    description: z.string().optional(),
+    subgroups: z.array(filterSubgroupGroupSchema),
+})
+
+// Tabs (principal conductor and derivated conductors)
+export const sideToSideFilterGroups = z.object({
+    label: z.string(),
+    description: z.string().optional(),
+    left: filterGroupSchema,
+    right: filterGroupSchema,
+})
+
+export const transformedFiltersSchema = z.array(filterGroupSchema.or(sideToSideFilterGroups))
+
+export type CheckboxFilter = z.infer<typeof checkboxFilterSchema>
+export type SelectFilter = z.infer<typeof selectFilterSchema>
+export type FilterSubgroupGroup = z.infer<typeof filterSubgroupGroupSchema>
+export type FilterGroup = z.infer<typeof filterGroupSchema>
+export type SideToSideFilterGroups = z.infer<typeof sideToSideFilterGroups>
+export type TransformedFilters = z.infer<typeof transformedFiltersSchema>
