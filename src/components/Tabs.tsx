@@ -6,10 +6,19 @@ import TabButton from "./TabButton";
 type Props = {
     titles: ComponentChildren[]
     children: ComponentChildren[]
+    index?: number
+    onIndexChange?: (index: number) => unknown
 }
 
 export default function Tabs(props: Props) {
-    const [selected, setSelected] = useState(0)
+    const [_selected, _setSelected] = useState(0)
+
+    function setSelected(index: number) {
+        props.onIndexChange?.(index)
+        _setSelected(index)
+    }
+
+    const selected = props.index ?? _selected
 
     return <div>
         <div className="mb-1 grid grid-cols-2">

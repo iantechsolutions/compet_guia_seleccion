@@ -16,6 +16,8 @@ export default function FilterEmpalme({ onFiltersValuesChange }: Props) {
 
     const { filtersValues, setSingleValue, setMultipleValue } = useFiltersValues()
 
+    const [tabIndex, setTabIndex] = useState(0)
+
     useEffect(() => {
         onFiltersValuesChange(filtersValues)
     }, [filtersValues, onFiltersValuesChange])
@@ -42,8 +44,19 @@ export default function FilterEmpalme({ onFiltersValuesChange }: Props) {
         <div class="mb-[-6px]">
             <CardsList key={'general'} filters={definitionsAndValues?.single || []} setValue={setSingleValue} values={filtersValues.single} />
         </div>
+
+        <div class="grid grid-cols-3 gap-5 justify-center mt-[60px] mb-6">
+            <img tabIndex={0} src={tabIndex === 0 ? "/left_selected.svg" : "/left_default.svg"} onClick={() => setTabIndex(0)} alt="Izquierda" className="block self-center w-max cursor-pointer" />
+            <div class="pb-[3px]">
+                <img src="/connector.svg" alt="Empalme" className="block self-center w-max" />
+            </div>
+            <img tabIndex={0} src={tabIndex === 1 ? "/right_selected.svg" : "/right_default.svg"} onClick={() => setTabIndex(1)} alt="Izquierda" className="block self-center w-max cursor-pointer" />
+        </div>
+
         <Tabs
-            titles={["Izquierda", "Derecha"]}
+            titles={["", ""]}
+            index={tabIndex}
+            onIndexChange={setTabIndex}
         >
             {[
                 <CardsList key={'left'} filters={definitionsAndValues?.multiple || []} values={filtersValues.multiple[0] || {}} setValue={(key: string, value: string | number | undefined | null) => setMultipleValue(0, key, value)} />,

@@ -8,7 +8,7 @@ export default function TabButton(props: {
     return <button
         type="button"
         onClick={props.onClick}
-        className="text-center text-gray-600 font-semibold py-2 cursor-pointer relative focus:ring w-full"
+        className="text-center text-gray-600 font-semibold py-2 cursor-pointer relative focus:ring w-full min-h-[30px]"
     >
         {props.title}
         {props.selected && <>
