@@ -1,6 +1,6 @@
 // Transofrm raw filters (from "filters.json") to a better types and apply some changes if needed
 
-import type { CheckboxFilter, ExtractedFilters, SelectFilter, TransformedFilters } from "./types";
+import type { CheckboxFilter, ExtractedFilters, FilterGroup, FilterSubgroupGroup, SelectFilter, TransformedFilters } from "./types";
 
 
 // Preguntas
@@ -58,7 +58,7 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
                     label: "",
                     filters: [
                         // 1
-                        getFilterOfTypeSelect('CA_NIVEL_DE_TENSIN', filters),
+                        getFilterOfTypeSelect('CA_NIVEL_DE_TENSIN', filters, { ignoreIfEmpty: true }),
                     ]
                 },
                 {
@@ -72,7 +72,7 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
                     label: "",
                     filters: [
                         // 3
-                        getFilterOfTypeSelect('CA_TECNOLOGA_PRINCIPAL', filters),
+                        getFilterOfTypeSelect('CA_TECNOLOGA_PRINCIPAL', filters, { allowUndefined: true }),
                     ]
                 },
                 {
@@ -170,7 +170,13 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
     return transformedFilters
 }
 
-function getFilterOfTypeCheckbox(key: string, filters: ExtractedFilters, isMultiple = true): CheckboxFilter {
+interface ExtraOptions {
+    ignoreIfEmpty?: boolean
+    isMultiple?: boolean
+    allowUndefined?: boolean
+}
+
+function getFilterOfTypeCheckbox(key: string, filters: ExtractedFilters, opts?: ExtraOptions): CheckboxFilter {
     if (!filters[key]) {
         throw new Error(`Filter with key "${key}" not found`)
     }
@@ -178,10 +184,10 @@ function getFilterOfTypeCheckbox(key: string, filters: ExtractedFilters, isMulti
         throw new Error(`Filter with key "${key}" is not of type "checkbox-group"`)
     }
 
-    return { key, ...filters[key], type: 'checkbox', multiple: isMultiple }
+    return { key, ...filters[key], type: 'checkbox', multiple: opts?.isMultiple ?? false, ignoreIfEmpty: opts?.ignoreIfEmpty ?? false, allowUndefined: opts?.allowUndefined ?? false }
 }
 
-function getFilterOfTypeSelect(key: string, filters: ExtractedFilters): SelectFilter {
+function getFilterOfTypeSelect(key: string, filters: ExtractedFilters, opts?: ExtraOptions): SelectFilter {
     if (!filters[key]) {
         throw new Error(`Filter with key "${key}" not found`)
     }
@@ -189,5 +195,48 @@ function getFilterOfTypeSelect(key: string, filters: ExtractedFilters): SelectFi
         throw new Error(`Filter with key "${key}" is not of type "select"`)
     }
 
-    return { key, ...filters[key], type: 'select' }
+    return { key, ...filters[key], type: 'select', ignoreIfEmpty: opts?.ignoreIfEmpty ?? false, allowUndefined: opts?.allowUndefined ?? false }
+}
+
+export function flattenFilters(filters: TransformedFilters) {
+    const flattenedFilters: (CheckboxFilter | SelectFilter)[] = []
+
+    for (const group of filters) {
+        if (group.type == 'side-to-side') {
+            flattenedFilters.push(...flattenFilters([group.left]))
+            flattenedFilters.push(...flattenFilters([group.right]))
+        } else {
+            for (const subgroup of group.subgroups) {
+                for (const filter of subgroup.filters) {
+                    flattenedFilters.push(filter)
+                }
+            }
+        }
+    }
+
+    return flattenedFilters
+}
+
+export interface FlattFilterSubgroupGroup extends FilterSubgroupGroup {
+    parent: FilterGroup
+}
+
+export function flattenSubGroups(filters: TransformedFilters) {
+    const flattenedSubgroups: (FlattFilterSubgroupGroup)[] = []
+
+    for (const group of filters) {
+        if (group.type == 'side-to-side') {
+            flattenedSubgroups.push(...flattenSubGroups([group.left]))
+            flattenedSubgroups.push(...flattenSubGroups([group.right]))
+        } else {
+            for (const subgroup of group.subgroups) {
+                flattenedSubgroups.push({
+                    ...subgroup,
+                    parent: group
+                })
+            }
+        }
+    }
+
+    return flattenedSubgroups
 }

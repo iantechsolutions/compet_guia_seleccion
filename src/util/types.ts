@@ -45,10 +45,10 @@ export const productTransformedFiltersSchema = z.record(z.array(z.string()))
 
 export type ProductTransformedFilters = z.infer<typeof productTransformedFiltersSchema>
 
-export const transformedProductSchema = z.union([
-    productSchema,
-    z.object({ extracted_params: productTransformedFiltersSchema })
-])
+
+
+
+export const transformedProductSchema = productSchema.and(z.object({ extracted_params: productTransformedFiltersSchema }))
 
 export type TransformedProduct = z.infer<typeof transformedProductSchema>
 
@@ -136,6 +136,8 @@ export const checkboxFilterSchema = z.object({
     type: z.literal('checkbox'),
     label: z.string(),
     key: z.string(),
+    ignoreIfEmpty: z.boolean().optional(),
+    allowUndefined: z.boolean().optional(),
     multiple: z.boolean(),
     values: z.array(z.object({
         label: z.string(),
@@ -148,6 +150,8 @@ export const selectFilterSchema = z.object({
     type: z.literal('select'),
     label: z.string(),
     key: z.string(),
+    ignoreIfEmpty: z.boolean().optional(),
+    allowUndefined: z.boolean().optional(),
     values: z.array(z.object({
         label: z.string(),
         key: z.string(),
@@ -188,3 +192,7 @@ export type SideToSideFilterGroups = z.infer<typeof sideToSideFilterGroups>
 export type TransformedFilters = z.infer<typeof transformedFiltersSchema>
 
 export type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
+
+export type SelectedFilters = {
+    [key: string]: string[]
+}
