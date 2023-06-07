@@ -1,11 +1,17 @@
 ---
-import TitleBar from '../components/TitleBar.astro';
-import Layout from '../layouts/Layout.astro';
+import TitleBar from "../components/TitleBar.astro";
+import Layout from "../layouts/Layout.astro";
+import { transformFilters } from "../util/filters";
+import { readProductsTransformed, readFilters } from "../util/provider";
+import Questions from "../components/Questions";
 
-export const prerender = true
+// export const prerender = true
 
+const products = await readProductsTransformed();
+const filters = transformFilters(await readFilters());
 ---
 
 <Layout title="Welcome to Astro.">
 	<TitleBar />
+	<Questions filters={filters} products={products} client:load />
 </Layout>

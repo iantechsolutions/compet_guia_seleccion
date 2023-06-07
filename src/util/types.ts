@@ -165,6 +165,7 @@ export const filterSubgroupGroupSchema = z.object({
 export const filterGroupSchema = z.object({
     label: z.string(),
     description: z.string().optional(),
+    type: z.literal('group'),
     subgroups: z.array(filterSubgroupGroupSchema),
 })
 
@@ -172,6 +173,7 @@ export const filterGroupSchema = z.object({
 export const sideToSideFilterGroups = z.object({
     label: z.string(),
     description: z.string().optional(),
+    type: z.literal('side-to-side'),
     left: filterGroupSchema,
     right: filterGroupSchema,
 })
@@ -184,3 +186,5 @@ export type FilterSubgroupGroup = z.infer<typeof filterSubgroupGroupSchema>
 export type FilterGroup = z.infer<typeof filterGroupSchema>
 export type SideToSideFilterGroups = z.infer<typeof sideToSideFilterGroups>
 export type TransformedFilters = z.infer<typeof transformedFiltersSchema>
+
+export type ArrayElement<A> = A extends readonly (infer T)[] ? T : never

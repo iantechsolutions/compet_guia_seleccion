@@ -52,6 +52,7 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
     const transformedFilters: TransformedFilters = [
         {
             label: 'General',
+            type: 'group',
             subgroups: [
                 {
                     label: "",
@@ -85,7 +86,9 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
         },
         {
             label: 'Conductores',
+            type: 'side-to-side',
             left: {
+                type: 'group',
                 label: 'Cable principal',
                 subgroups: [
                     {
@@ -118,6 +121,7 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
                 ]
             },
             right: {
+                type: 'group',
                 label: 'Cable derivado',
                 subgroups: [
                     {
@@ -144,6 +148,7 @@ export function transformFilters(filters: ExtractedFilters): TransformedFilters 
             }
         },
         {
+            type: 'group',
             label: 'Últimas preguntas',
             subgroups: [
                 {

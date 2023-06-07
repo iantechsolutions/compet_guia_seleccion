@@ -1,5 +1,4 @@
-import type { ExtractedFilters, Product, RawDataStructureDefinition, SingleTransformedFilter } from "../util/types";
-type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
+import type { ArrayElement, ExtractedFilters, Product, RawDataStructureDefinition, SingleTransformedFilter } from "../util/types";
 
 export function extractFilters(filters: RawDataStructureDefinition): ExtractedFilters {
     const transformedFilters: ExtractedFilters = {}
