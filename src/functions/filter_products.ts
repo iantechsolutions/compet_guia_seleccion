@@ -13,7 +13,7 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
 
             const params = product.extracted_params[key]
 
-            if(params.length == 0 || (params.length == 1 && params[0] == '') && filtersAsMap.get(key)?.ignoreIfEmpty) {
+            if (params.length == 0 || (params.length == 1 && params[0] == '') && filtersAsMap.get(key)?.ignoreIfEmpty) {
                 continue
             }
 
@@ -33,4 +33,19 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
 
         return true
     })
+}
+
+export function shouldIgnoreQuestion(products: TransformedProduct[], filters: SelectedFilters, extraFilters: { key: string, values: string[] }[], allFilters: (SelectFilter | CheckboxFilter)[]) {
+    if(extraFilters.length == 0) {
+        const filtered = filterProducts(products, filters, allFilters)
+        return filtered.length == 0
+    }
+    
+    for (const extraFilter of extraFilters) {
+        const filtered = filterProducts(products, { ...filters, [extraFilter.key]: extraFilter.values }, allFilters)
+        if (filtered.length != 0) {
+            return false
+        }
+    }
+    return true
 }

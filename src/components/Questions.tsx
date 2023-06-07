@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 import { FlattFilterSubgroupGroup, flattenFilters, flattenSubGroups } from "../util/filters";
 import type { ArrayElement, FilterGroup, SelectedFilters, SideToSideFilterGroups, TransformedFilters, TransformedProduct } from "../util/types";
-import { filterProducts } from "../functions/filter_products";
+import { filterProducts, shouldIgnoreQuestion } from "../functions/filter_products";
 
 export default function Questions({ filters, products }: { filters: TransformedFilters, products: TransformedProduct[] }) {
 
@@ -20,6 +20,23 @@ export default function Questions({ filters, products }: { filters: TransformedF
     const filtered = useMemo(() => {
         return filterProducts(products, selectedFilters, flatFilters)
     }, [products, selectedFilters])
+
+    function nextQuestion(carry: number = 0) {
+        const nextSoubgroup = subgroups[subgroupIndex + 1 + carry]
+
+        if (!nextSoubgroup) return
+
+        // const tryWithAllNextFilters 
+        // TODO: Create a list of all posibble selected filters
+
+        const ignore = shouldIgnoreQuestion(products, selectedFilters, [], flatFilters)
+
+        if (ignore) { 
+            return nextQuestion(carry + 1)
+        }
+
+        setSubgroupIndex(subgroupIndex + 1 + carry)
+    }
 
     function setFilter(key: string, value: string | null) {
         if (value === null || value === '') {
@@ -57,7 +74,7 @@ export default function Questions({ filters, products }: { filters: TransformedF
             <pre>{JSON.stringify(products, null, 2)}</pre> */}
             <SubGroupRender
                 subgroup={subgroups[subgroupIndex]}
-                onNext={() => setSubgroupIndex(subgroupIndex + 1)}
+                onNext={() => nextQuestion()}
                 setFilter={setFilter}
                 toggleFilter={toggleFilter}
             />
@@ -99,7 +116,7 @@ export function SelectRender({ filter, setFilter }: {
     setFilter: (key: string, value: string | null) => unknown
 }) {
     useEffect(() => {
-        if(filter.allowUndefined) return
+        if (filter.allowUndefined) return
         setFilter(filter.key, filter.values[0].key)
     }, [])
 
