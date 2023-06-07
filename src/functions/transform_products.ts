@@ -1,57 +1,47 @@
 import type { Product, RawDataStructureDefinition } from "../util/types";
-type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
+import { extractFilters, type ExtractedFilters, TypedSingleTransformedFilter } from "./extract_questions_from_filters";
 
-export function transformProducts(products: Product[], filters: RawDataStructureDefinition) {
+export function transformProducts(products: Product[], _filters: RawDataStructureDefinition) {
+    const filters = extractFilters(_filters)
+
     return products.map(p => ({
         ...p,
         transformed_params: transformFiltersForProduct(p, filters)
     }))
 }
 
-interface TransformedFilters {
+interface ProductTransformedFilters {
     [key: string]: string[]
 }
 
-export function transformFiltersForProduct(product: Product, filters: RawDataStructureDefinition) {
-    const transformedFilters: TransformedFilters = {}
 
-    _transformFiltersForProduct(product, filters, transformedFilters)
+export function transformFiltersForProduct(product: Product, filters: ExtractedFilters) {
+    const transformedFilters: ProductTransformedFilters = {}
+
+    for (const key in filters) {
+        const filter = filters[key]
+        if (filter.type === 'select') {
+            const values = transformFiltersOfTypeSelect(product, key, filter)
+            transformedFilters[key] = values
+
+        } else if (filter.type === 'checkbox-group') {
+            const values = transformFiltersOfTypeCheckBox(product, filter)
+            transformedFilters[key] = values
+        }
+    }
 
     return transformedFilters
 }
 
-
-function _transformFiltersForProduct(product: Product, filters: RawDataStructureDefinition, transformedFilters: TransformedFilters = {}) {
-    filters.forEach(filter => {
-        // console.log('filters', filter.label, filter.type)
-        if (filter.type === 'select') {
-            const [key, values] = transformFiltersOfTypeSelect(product, filter)
-            transformedFilters[key] = values
-
-        } else if (filter.type === 'checkbox-group') {
-            const [key, values] = transformFiltersOfTypeCheckBox(product, filter)
-            transformedFilters[key] = values
-
-        } else if (filter.type === 'grouptabsheet') {
-            _transformFiltersForProduct(product, filter.tabsdata.reduce((acc, value) => ([...acc, ...value]), [] as RawDataStructureDefinition), transformedFilters)
-
-        } else if (filter.type === 'row') {
-            _transformFiltersForProduct(product, filter.rowdata.reduce((acc, value) => ([...acc, ...value]), [] as RawDataStructureDefinition), transformedFilters)
-
-        }
-    })
-}
-
-function transformFiltersOfTypeSelect(product: Product, filter: ArrayElement<RawDataStructureDefinition>): [string, string[]] {
+function transformFiltersOfTypeSelect(product: Product, key: string, filter: TypedSingleTransformedFilter): string[] {
     if (filter.type !== 'select') {
         throw new Error('filter.type must be "select"')
     }
 
-    const key = filter.name
-    const filtersValues = filter.values.map(value => value.value)
+    const filtersValues = filter.values.map(value => value.key)
     const singleValue = product.params[key].toString()
     const values = [singleValue]
-    return [key, values]
+    return values
 }
 
 enum CheckboxValue {
@@ -59,20 +49,19 @@ enum CheckboxValue {
     no = 'N',
 }
 
-function transformFiltersOfTypeCheckBox(product: Product, filter: ArrayElement<RawDataStructureDefinition>): [string, string[]] {
+function transformFiltersOfTypeCheckBox(product: Product, filter: TypedSingleTransformedFilter): string[] {
     if (filter.type !== 'checkbox-group') {
         throw new Error('filter.type must be "select"')
     }
 
-    const key = filter.name
     const values: string[] = []
     filter.values.forEach(checkboxItem => {
-        const key = checkboxItem.value
+        const key = checkboxItem.key
         const value = product.params[key]
         if (value === CheckboxValue.yes) {
             values.push(key)
         }
     })
 
-    return [key, values]
+    return values
 }
