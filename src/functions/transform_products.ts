@@ -1,5 +1,5 @@
 import type { Product, RawDataStructureDefinition } from "../util/types";
-import { extractFilters, type ExtractedFilters, TypedSingleTransformedFilter } from "./extract_questions_from_filters";
+import { extractFilters, type ExtractedFilters, TypedSingleTransformedFilter } from "./extract_filters";
 
 export function transformProducts(products: Product[], _filters: RawDataStructureDefinition) {
     const filters = extractFilters(_filters)
@@ -38,7 +38,6 @@ function transformFiltersOfTypeSelect(product: Product, key: string, filter: Typ
         throw new Error('filter.type must be "select"')
     }
 
-    const filtersValues = filter.values.map(value => value.key)
     const singleValue = product.params[key].toString()
     const values = [singleValue]
     return values
