@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { readFilters } from "../../util/server";
+import { readFilters } from "../../util/provider";
 
 export const get: APIRoute = async function get({ url }) {
 

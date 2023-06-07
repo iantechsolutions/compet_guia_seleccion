@@ -39,6 +39,21 @@ export const productsSchema = z.array(productSchema)
 export type Product = z.infer<typeof productSchema>
 export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
 
+// ---> Transformed products (see transform_products.ts)
+
+export const productTransformedFiltersSchema = z.record(z.array(z.string()))
+
+export type ProductTransformedFilters = z.infer<typeof productTransformedFiltersSchema>
+
+export const transformedProductSchema = z.union([
+    productSchema,
+    z.object({ extracted_params: productTransformedFiltersSchema })
+])
+
+export type TransformedProduct = z.infer<typeof transformedProductSchema>
+
+// ---> Data structure definition (like imported from filters.json)
+
 // Checkbox group filter
 export const filterDefinitionValueCheckboxSchema = z.object({
     label: z.string(),
@@ -96,17 +111,35 @@ export const dataStructureDefinitionSchema = z.array(filterDefinitionTabsGroupSc
 
 export type RawDataStructureDefinition = z.infer<typeof dataStructureDefinitionSchema>
 
+// ---> Extracted filters (see extract_filters.ts)
+
+export const singleTransformedFilterSchema = z.array(z.object({
+    key: z.string(),
+    label: z.string(),
+}))
+export type SingleTransformedFilter = z.infer<typeof singleTransformedFilterSchema>
+
+export const typedSingleTransformedFilterSchema = z.object({
+    label: z.string(),
+    type: z.union([z.literal('select'), z.literal('checkbox-group')]),
+    values: singleTransformedFilterSchema,
+})
+export type TypedSingleTransformedFilter = z.infer<typeof typedSingleTransformedFilterSchema>
+
+export const extractedFiltersSchema = z.record(typedSingleTransformedFilterSchema)
+export type ExtractedFilters = z.infer<typeof extractedFiltersSchema>
+
 // ---> Transformed filters (see filters.ts)
 
 // Checkbox (can choose one or multiple values)
 export const checkboxFilterSchema = z.object({
     type: z.literal('checkbox'),
     label: z.string(),
-    code: z.string(),
+    key: z.string(),
     multiple: z.boolean(),
     values: z.array(z.object({
         label: z.string(),
-        value: z.string(),
+        key: z.string(),
     }))
 })
 
@@ -114,10 +147,10 @@ export const checkboxFilterSchema = z.object({
 export const selectFilterSchema = z.object({
     type: z.literal('select'),
     label: z.string(),
-    code: z.string(),
+    key: z.string(),
     values: z.array(z.object({
         label: z.string(),
-        value: z.string(),
+        key: z.string(),
     }))
 })
 

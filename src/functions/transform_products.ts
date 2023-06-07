@@ -1,19 +1,13 @@
-import type { Product, RawDataStructureDefinition } from "../util/types";
-import { extractFilters, type ExtractedFilters, TypedSingleTransformedFilter } from "./extract_filters";
+import type { Product, ProductTransformedFilters, RawDataStructureDefinition, TransformedProduct } from "../util/types";
+import { extractFilters } from "./extract_filters";
+import type { ExtractedFilters, TypedSingleTransformedFilter } from "../util/types";
 
-export function transformProducts(products: Product[], _filters: RawDataStructureDefinition) {
-    const filters = extractFilters(_filters)
-
+export function transformProducts(products: Product[], filters: ExtractedFilters): TransformedProduct[] {
     return products.map(p => ({
         ...p,
-        transformed_params: transformFiltersForProduct(p, filters)
+        extracted_params: transformFiltersForProduct(p, filters)
     }))
 }
-
-interface ProductTransformedFilters {
-    [key: string]: string[]
-}
-
 
 export function transformFiltersForProduct(product: Product, filters: ExtractedFilters) {
     const transformedFilters: ProductTransformedFilters = {}

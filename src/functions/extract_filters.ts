@@ -1,16 +1,5 @@
-import type { Product, RawDataStructureDefinition } from "../util/types";
+import type { ExtractedFilters, Product, RawDataStructureDefinition, SingleTransformedFilter } from "../util/types";
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
-
-export type SingleTransformedFilter = { key: string, label: string }[]
-
-export type TypedSingleTransformedFilter = {
-    values: SingleTransformedFilter
-    type: 'select' | 'checkbox-group'
-}
-
-export interface ExtractedFilters {
-    [key: string]: TypedSingleTransformedFilter
-}
 
 export function extractFilters(filters: RawDataStructureDefinition): ExtractedFilters {
     const transformedFilters: ExtractedFilters = {}
@@ -27,6 +16,7 @@ function _extractFilters(filters: RawDataStructureDefinition, transformedFilters
         if (filter.type === 'select') {
             const [key, values] = extractFilterOfTypeSelect(filter)
             transformedFilters[key] = {
+                label: filter.label,
                 type: 'select',
                 values,
             }
@@ -34,6 +24,7 @@ function _extractFilters(filters: RawDataStructureDefinition, transformedFilters
         } else if (filter.type === 'checkbox-group') {
             const [key, values] = extractFilterOfTypeCheckbox(filter)
             transformedFilters[key] = {
+                label: filter.label,
                 type: 'checkbox-group',
                 values,
             }
