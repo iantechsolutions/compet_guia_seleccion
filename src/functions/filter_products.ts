@@ -5,6 +5,10 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
 
     return products.filter(product => {
         for (const key in filters) {
+            if(filtersAsMap.get(key)?.type === 'checkbox' && filters[key].length === 0) {
+                return false
+            }
+            
             if (filters[key].length == 0) {
                 continue
             }
