@@ -1,7 +1,8 @@
 import fs from "fs/promises";
-import { type ExtractedFilters, type Product, type RawDataStructureDefinition, dataStructureDefinitionSchema, productsSchema } from "./types";
+import { type ExtractedFilters, type Product, type RawDataStructureDefinition, dataStructureDefinitionSchema, productsSchema, questionsFileSchema, QuestionFilter } from "./types";
 import { extractFilters } from "../functions/extract_filters";
 import { transformProducts } from "../functions/transform_products";
+import yaml from "yaml";
 
 let savedProducts: Product[] | null = null
 
@@ -36,6 +37,30 @@ export async function readRawFilters(): Promise<RawDataStructureDefinition> {
 export async function readFilters(): Promise<ExtractedFilters> {
     const rawFilters = await readRawFilters()
     return extractFilters(rawFilters)
+}
+
+export async function readQuestions() {
+    const filters = await readFilters()
+    const data = await fs.readFile("./questions.yaml", "utf-8");
+
+    const { groups } = questionsFileSchema.parse(yaml.parse(data))
+
+    return groups.map(group => ({
+        ...group,
+        questions: group.questions.map((question): QuestionFilter => {
+            const filter = filters[question.key]
+
+            if(!filter) {
+                throw new Error(`Filter with key "${question.key}" not found`)
+            }
+
+            return {
+                ...question,
+                type: "question",
+                values: filter.values
+            }
+        })
+    }))
 }
 
 export async function saveProducts(products: Product[]) {

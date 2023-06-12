@@ -131,64 +131,54 @@ export type ExtractedFilters = z.infer<typeof extractedFiltersSchema>
 
 // ---> Transformed filters (see filters.ts)
 
-// Checkbox (can choose one or multiple values)
-export const checkboxFilterSchema = z.object({
-    type: z.literal('checkbox'),
+
+// We don't have selects and checkboxes anymore, we only have questions
+// Only one value at a time and always required
+export const questionFilterSchema = z.object({
     label: z.string(),
     key: z.string(),
-    ignoreIfEmpty: z.boolean().optional(),
-    allowUndefined: z.boolean().optional(),
-    multiple: z.boolean(),
+    type: z.literal('question'),
+    large_options: z.boolean().optional().default(false),
+    icon: z.string().optional(),
+    depends_on: z.record(z.string()).optional().default({}),
     values: z.array(z.object({
         label: z.string(),
         key: z.string(),
+        icon: z.string().optional(),
     }))
 })
 
-// Select (can choose only one value)
-export const selectFilterSchema = z.object({
-    type: z.literal('select'),
-    label: z.string(),
-    key: z.string(),
-    ignoreIfEmpty: z.boolean().optional(),
-    allowUndefined: z.boolean().optional(),
-    values: z.array(z.object({
-        label: z.string(),
-        key: z.string(),
-    }))
+export const importedQuestionFilterSchema = questionFilterSchema.pick({
+    icon: true,
+    key: true,
+    label: true,
+    large_options: true,
+    depends_on: true,
 })
 
-// Multiple filters (checkboxes and selects)
-export const filterSubgroupGroupSchema = z.object({
-    label: z.string(),
-    description: z.string().optional(),
-    filters: z.array(checkboxFilterSchema.or(selectFilterSchema)),
-})
-
-// Group of subgroups of filters
-export const filterGroupSchema = z.object({
+export const questionsGroupSchema = z.object({
     label: z.string(),
     description: z.string().optional(),
     type: z.literal('group'),
-    subgroups: z.array(filterSubgroupGroupSchema),
+    questions: z.array(questionFilterSchema),
 })
 
-// Tabs (principal conductor and derivated conductors)
-export const sideToSideFilterGroups = z.object({
+export const importedQuestionsGroupSchema = z.object({
     label: z.string(),
     description: z.string().optional(),
-    type: z.literal('side-to-side'),
-    left: filterGroupSchema,
-    right: filterGroupSchema,
+    type: z.literal('group'),
+    questions: z.array(importedQuestionFilterSchema),
 })
 
-export const transformedFiltersSchema = z.array(filterGroupSchema.or(sideToSideFilterGroups))
+export const questionsFileSchema = z.object({
+    groups: z.array(importedQuestionsGroupSchema),
+})
 
-export type CheckboxFilter = z.infer<typeof checkboxFilterSchema>
-export type SelectFilter = z.infer<typeof selectFilterSchema>
-export type FilterSubgroupGroup = z.infer<typeof filterSubgroupGroupSchema>
-export type FilterGroup = z.infer<typeof filterGroupSchema>
-export type SideToSideFilterGroups = z.infer<typeof sideToSideFilterGroups>
+export const transformedFiltersSchema = z.array(questionsGroupSchema)
+
+export type QuestionFilter = z.infer<typeof questionFilterSchema>
+export type ImportedQuestionFilter = z.infer<typeof importedQuestionFilterSchema>
+export type QuestionsGroup = z.infer<typeof questionsGroupSchema>
 export type TransformedFilters = z.infer<typeof transformedFiltersSchema>
 
 export type ArrayElement<A> = A extends readonly (infer T)[] ? T : never

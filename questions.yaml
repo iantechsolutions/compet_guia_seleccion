@@ -1,0 +1,67 @@
+groups:
+  - label: General
+    type: group
+    questions:
+      - key: CA_NIVEL_DE_TENSIN
+        label: Nivel de tensión
+        large_options: false
+      - key: CA_TIPO_DE_ACCESORIO
+        label: Tipo de accesorio
+        large_options: false
+      - key: CA_TECNOLOGA_PRINCIPAL
+        label: Tecnología principal
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684438454148
+        label: Uso Interior/Exterior
+        large_options: false
+  - label: Conductor principal
+    type: group
+    questions:
+      - key: CA_CHECKBOX-GROUP_1684413233368
+        label: Número de fases del cable principal
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684413076075
+        label: Tipo de Pantalla de la/s fase/s
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684430004592
+        label: Sección de cable ppal. unipolar
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684430443116
+        label: Cable ppal. bipolar (mm2)
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684430969197
+        label: Cable ppal. tripolar (mm2)
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684431095631
+        label: Cable ppal. tripolar con neutro (mm2)
+        large_options: false
+  - label: Conductor derivado
+    type: group
+    questions:
+      - key: CA_CHECKBOX-GROUP_1684413315284
+        label: Cantidad de fases del cable derivado
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684431809461
+        label: Cable derivado unipolar (mm2)
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684431991660
+        label: Cable derivado bipolar (mm2)
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684432348609
+        label: Cable derivado tripolar (mm2)
+        large_options: false
+      - key: CA_CHECKBOX-GROUP_1684432894891
+        label: Cable derivado tetrapolar (mm2)
+        large_options: false
+  - label: Últimas preguntas
+    type: group
+    questions:
+      - key: CA_INTERFAZ__CORRIENTE_NOMINAL_DE_OPERACIN
+        label: Interfaz / Corriente nominal de operación
+        large_options: false
+      - key: CA_TIPO_DE_SEPARABLE
+        label: Tipo de separable
+        large_options: false
+      - key: CA_SISTEMA_DE_SUJECIN
+        label: Sistema de sujeción
+        large_options: false
