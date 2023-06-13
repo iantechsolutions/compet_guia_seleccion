@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { type ExtractedFilters, type Product, type RawDataStructureDefinition, dataStructureDefinitionSchema, productsSchema, questionsFileSchema, QuestionFilter } from "./types";
+import { type Product, type RawDataStructureDefinition, dataStructureDefinitionSchema, productsSchema, questionsFileSchema, QuestionFilter } from "./types";
 import { extractFilters } from "../functions/extract_filters";
 import { transformProducts } from "../functions/transform_products";
 import yaml from "yaml";
