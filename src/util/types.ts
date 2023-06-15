@@ -136,6 +136,7 @@ export type ExtractedFilters = z.infer<typeof extractedFiltersSchema>
 // Only one value at a time and always required
 export const questionFilterSchema = z.object({
     label: z.string(),
+    description: z.string().optional(),
     key: z.string(),
     type: z.literal('question'),
     large_options: z.boolean().optional().default(false),
@@ -152,9 +153,12 @@ export const importedQuestionFilterSchema = questionFilterSchema.pick({
     icon: true,
     key: true,
     label: true,
+    description: true,
     large_options: true,
     depends_on: true,
-})
+}).and(z.object({
+    icons: z.record(z.string()).optional().default({}),
+}))
 
 export const questionsGroupSchema = z.object({
     label: z.string(),
@@ -184,5 +188,7 @@ export type TransformedFilters = z.infer<typeof transformedFiltersSchema>
 export type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
 
 export type SelectedFilters = {
-    [key: string]: string[]
-}
+    key: string
+    questionIndex: number
+    values: string[]
+}[]

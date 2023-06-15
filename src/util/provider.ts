@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { type Product, type RawDataStructureDefinition, dataStructureDefinitionSchema, productsSchema, questionsFileSchema, QuestionFilter } from "./types";
+import { type Product, type RawDataStructureDefinition, dataStructureDefinitionSchema, productsSchema, questionsFileSchema, QuestionFilter, ExtractedFilters } from "./types";
 import { extractFilters } from "../functions/extract_filters";
 import { transformProducts } from "../functions/transform_products";
 import yaml from "yaml";
@@ -57,7 +57,10 @@ export async function readQuestions() {
             return {
                 ...question,
                 type: "question",
-                values: filter.values
+                values: filter.values.map(value => ({
+                    ...value,
+                    icon: question.icons[value.key]
+                }))
             }
         })
     }))
