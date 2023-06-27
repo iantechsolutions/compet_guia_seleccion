@@ -3,12 +3,8 @@ import type { QuestionFilter, SelectedFilters, TransformedProduct } from "../uti
 export function filterProducts(products: TransformedProduct[], filters: SelectedFilters) {
     return products.filter(product => {
 
-        for(const question of filters) {
-            const intersection = arrayValuesIntersection(product.extracted_params[question.key], question.values)
-
-            // if(question.key === 'CA_CHECKBOX-GROUP_1684413233368') {
-            //     console.log('question', question, intersection, product)
-            // }
+        for(const filter of filters) {
+            const intersection = arrayValuesIntersection(product.extracted_params[filter.key], filter.values)
 
             if(intersection.length == 0) {
                 return false
@@ -19,14 +15,32 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
     })
 }
 
-export function shouldIgnoreQuestionOption(filteredProducts: TransformedProduct[], nextKey: string, nextValues: string[]) {
-    const products = filterProducts(filteredProducts, [{ key: nextKey, values: nextValues, questionIndex: 999999 }])
+export function shouldIgnoreQuestionOption(filteredProducts: TransformedProduct[], nextQuestion: QuestionFilter, nextValues: string[]) {
+    const products = filterProducts(filteredProducts, [{ key: nextQuestion.key, values: nextValues, questionIndex: 999999, question: nextQuestion }])
     return products.length == 0
 }
 
-export function shouldIgnoreQuestion(filteredProducts: TransformedProduct[], nextQuestion: QuestionFilter) {
+export function shouldIgnoreQuestion(filteredProducts: TransformedProduct[], appliedFilters: SelectedFilters, nextQuestion: QuestionFilter) {
+    const dependsOnKeys = Object.keys(nextQuestion.depends_on)
+
+    if(dependsOnKeys.length > 0) {
+        for(const key of dependsOnKeys) {
+            const filter = appliedFilters.find(filter => filter.key == key)
+            const expectedValue = nextQuestion.depends_on[key]
+            const foundValue = !!filter?.values.find(v => v == expectedValue)
+            
+            // console.table([
+            //     { key, value: expectedValue, filterKey: filter?.key, filterValues: filter?.values, filterValue: filter?.values[0] }
+            // ])
+
+            if(!foundValue) {
+                return true
+            }
+        }
+    }
+
     for(const value of nextQuestion.values) {
-        if(!shouldIgnoreQuestionOption(filteredProducts,  nextQuestion.key, [value.key])) {
+        if(!shouldIgnoreQuestionOption(filteredProducts,  nextQuestion, [value.key])) {
             return false
         }   
     }

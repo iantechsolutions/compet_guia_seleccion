@@ -48,7 +48,7 @@ export function Questions({ filters, products, initialUrl, }: { filters: Transfo
             return nextIndex
         }
 
-        const ignore = shouldIgnoreQuestion(filteredProducts, flatQuestions[nextIndex])
+        const ignore = shouldIgnoreQuestion(filteredProducts, selectedFilters, flatQuestions[nextIndex])
 
         if (ignore) {
             return getNextIndex(carry + 1)
@@ -72,10 +72,6 @@ export function Questions({ filters, products, initialUrl, }: { filters: Transfo
         return index
     }, [selectedFilters])
 
-    useEffect(() => {
-        console.log(selectedFilters, filterProducts.length)
-    }, [selectedFilters, filterProducts])
-
     const question: QuestionFilter = flatQuestions[questionIndex]
 
     const [nextFilterValue, setNextFilterValue] = useState<{ key: string, values: string[] } | null>(null)
@@ -86,7 +82,7 @@ export function Questions({ filters, products, initialUrl, }: { filters: Transfo
 
     function forward() {
         if (!canGoForward() || !nextFilterValue) return
-        setSelectedFilters([...selectedFilters, { ...nextFilterValue, questionIndex: questionIndex }])
+        setSelectedFilters([...selectedFilters, { ...nextFilterValue, questionIndex: questionIndex, question }])
         setNextFilterValue(null)
     }
 
@@ -130,8 +126,6 @@ export function Questions({ filters, products, initialUrl, }: { filters: Transfo
 
     const [showProducts, setShowProducts] = useState(false)
 
-    question.values.forEach(value => console.log(value, shouldIgnoreQuestionOption(filteredProducts, question.key, [value.key])))
-
     const SHOW_MAX_PRODUCTS = 100
 
     return <div
@@ -155,7 +149,7 @@ export function Questions({ filters, products, initialUrl, }: { filters: Transfo
 
                     <Question key={question.key} question={{
                         ...question,
-                        values: question.values.filter(value => !shouldIgnoreQuestionOption(filteredProducts, question.key, [value.key]))
+                        values: question.values.filter(value => !shouldIgnoreQuestionOption(filteredProducts, question, [value.key]))
                     }} onChange={setNextFilterValue} values={nextFilterValue?.values} />
                 </>}
 
