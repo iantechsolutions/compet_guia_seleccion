@@ -7,9 +7,10 @@ interface Props {
     forward?: () => unknown
     back?: () => unknown
     selectedFilters: SelectedFilters
+    filtersLabelsByValueKey: Map<string, string>
 }
 
-export default function QuestionStatus({ question, index, filteredProducts, back, forward, selectedFilters }: Props) {
+export default function QuestionStatus({ question, index, filteredProducts, back, forward, selectedFilters, filtersLabelsByValueKey }: Props) {
     const icon = question.icon
 
     return <div className="py-2 px-2 bg-blue-500 text-white mt-5 flex align-items-center">
@@ -19,7 +20,7 @@ export default function QuestionStatus({ question, index, filteredProducts, back
         <div className="max-w-full">
             {selectedFilters.length > 0 && <div className="px-2 py-0 bg-blue-400 rounded-full whitespace-nowrap text-ellipsis overflow-hidden max-w-full">
                 {selectedFilters.map((filter, i) => {
-                    return filter.values.join(" - ")
+                    return filter.values.map(value => filtersLabelsByValueKey.get(value) || value).join(" - ")
                 }).join(", ")}
             </div>}
             {selectedFilters.length === 0 && <span>Elija una opción y presione siguiente</span>}

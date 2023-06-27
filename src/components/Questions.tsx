@@ -18,10 +18,20 @@ const options = {
 const win = typeof window !== 'undefined' ? window : undefined
 const controller = win ? new NavKeysController(window.history, options) : null// both params are optional
 
-export function Questions({ filters, products, initialUrl }: { filters: TransformedFilters, products: TransformedProduct[], initialUrl: URL }) {
+export function Questions({ filters, products, initialUrl, }: { filters: TransformedFilters, products: TransformedProduct[], initialUrl: URL }) {
     const flatQuestions = useMemo(() => {
         return flattenQuestions(filters)
     }, [filters])
+
+    const filtersLabelsByValueKey = useMemo(() => { 
+        const map = new Map<string, string>()
+        for (const question of flatQuestions) {
+            question.values.forEach(value => {
+                map.set(value.key, value.label)
+            })
+        }
+        return map
+    }, [flatQuestions])
 
     const [selectedFilters, setSelectedFilters] = useSelectedFiltersState(flatQuestions)
 
@@ -140,6 +150,7 @@ export function Questions({ filters, products, initialUrl }: { filters: Transfor
                         filteredProducts={filteredProducts}
                         forward={canGoForward() ? forward : undefined}
                         back={canGoBack() ? back : undefined}
+                        filtersLabelsByValueKey={filtersLabelsByValueKey}
                     />
 
                     <Question key={question.key} question={{
