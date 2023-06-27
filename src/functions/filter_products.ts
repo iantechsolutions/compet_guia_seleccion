@@ -5,6 +5,11 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
 
         for(const question of filters) {
             const intersection = arrayValuesIntersection(product.extracted_params[question.key], question.values)
+
+            // if(question.key === 'CA_CHECKBOX-GROUP_1684413233368') {
+            //     console.log('question', question, intersection, product)
+            // }
+
             if(intersection.length == 0) {
                 return false
             }
@@ -16,7 +21,7 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
 
 export function shouldIgnoreQuestionOption(filteredProducts: TransformedProduct[], nextKey: string, nextValues: string[]) {
     const products = filterProducts(filteredProducts, [{ key: nextKey, values: nextValues, questionIndex: 999999 }])
-    return products.length === 0
+    return products.length == 0
 }
 
 export function shouldIgnoreQuestion(filteredProducts: TransformedProduct[], nextQuestion: QuestionFilter) {

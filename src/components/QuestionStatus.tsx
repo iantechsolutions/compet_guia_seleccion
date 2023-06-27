@@ -24,7 +24,7 @@ export default function QuestionStatus({ question, index, filteredProducts, back
             </div>}
             {selectedFilters.length === 0 && <span>Elija una opción y presione siguiente</span>}
             <div>
-                <span className="text-lg">Pregunta {index + 1} - ver {filteredProducts?.length} productos</span>
+                <span className="text-lg">Pregunta {index + 1} - {filteredProducts?.length} productos encontrados</span>
             </div>
         </div>
         <div className="ml-[auto] hidden md:flex">
