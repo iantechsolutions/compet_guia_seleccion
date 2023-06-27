@@ -16,7 +16,7 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
 
 export function shouldIgnoreQuestionOption(filteredProducts: TransformedProduct[], nextKey: string, nextValues: string[]) {
     const products = filterProducts(filteredProducts, [{ key: nextKey, values: nextValues, questionIndex: 999999 }])
-    return filteredProducts.length == 0
+    return products.length === 0
 }
 
 export function shouldIgnoreQuestion(filteredProducts: TransformedProduct[], nextQuestion: QuestionFilter) {
