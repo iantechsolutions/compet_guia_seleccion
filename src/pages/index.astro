@@ -10,6 +10,6 @@ const products = await readProductsTransformed();
 const url = Astro.url;
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Guía de Selección">
 	<Questions filters={questions} products={products} initialUrl={url} client:load />
 </Layout>
