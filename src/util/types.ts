@@ -27,6 +27,7 @@ export const productSchema = z.object({
     }
 
     return {
+        shouldInclude: value["Incluido en Guia"]?.toLowerCase() === "si",
         code: value.COD_ARTICU,
         name: value.DESCRIPCIO,
         description: value.TEXTO,
@@ -44,8 +45,6 @@ export type AdittionalFields = z.infer<typeof adittionalFieldsSchema>
 export const productTransformedFiltersSchema = z.record(z.array(z.string()))
 
 export type ProductTransformedFilters = z.infer<typeof productTransformedFiltersSchema>
-
-
 
 
 export const transformedProductSchema = productSchema.and(z.object({ extracted_params: productTransformedFiltersSchema }))

@@ -4,7 +4,7 @@ groups:
     questions:
       - key: CA_NIVEL_DE_TENSIN
         icon: voltage.png
-        label: Nivel de tensión
+        label: Nivel de voltage
         description: Rango de tensión en el que opera el equipo
         large_options: false
         icons: 

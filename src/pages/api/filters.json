@@ -39,10 +39,6 @@
 							"value": "Menos de 1kV (baja tensión)"
 						},
 						{
-							"label": "Todas las tensiones (prueba)",
-							"value": ""
-						},
-						{
 							"label": "5 a 8 kV",
 							"value": "5 a 8 kV"
 						},
