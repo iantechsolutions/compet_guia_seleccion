@@ -105,10 +105,10 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
                     })}
                 </div>
 
-                <button type="button" id="scroll-right" className="hidden absolute right-0 top-0 py-[5px] pl-[6px] pr-[4px] rounded-full shadow-sm bg-primary">
+                <button type="button" id="scroll-right" className="hidden absolute right-0 top-0 py-[3px] pl-[6px] pr-[4px] bg-primary">
                     {right}
                 </button>
-                <button type="button" id="scroll-left" className="hidden absolute left-0 top-0 py-[5px] pl-[9px] pr-[1px] rounded-full shadow-sm bg-primary">
+                <button type="button" id="scroll-left" className="hidden absolute left-0 top-0 py-[3px] pl-[9px] pr-[1px] bg-primary">
                     {left}
                 </button>
 
