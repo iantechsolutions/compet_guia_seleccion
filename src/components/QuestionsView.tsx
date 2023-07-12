@@ -211,7 +211,7 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
         </div>
         <div className="absolute bottom-0 left-0 right-0 py-[12px] px-[20px] shadow-[2px_0_10px_-3px_rgba(0,0,0,0.3)] flex justify-between">
             <Button onClick={() => back()}>
-                Atrás
+                Anterior
             </Button>
             <span></span>
             {!isLast && <Button
