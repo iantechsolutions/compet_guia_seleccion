@@ -1,7 +1,7 @@
 import type { QuestionFilter, SelectedFilters } from "../util/types";
-import { useEffect, useMemo, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
 
-export default function useSelectedFiltersState(questions: QuestionFilter[]) {
+export default function useSelectedFiltersState(questions: QuestionFilter[], initialFilters?: SelectedFilters | null) {
     // TODO: Do something cool with data in the url
-    return useState<SelectedFilters>([])
+    return useState<SelectedFilters>(initialFilters || [])
 }

@@ -5,11 +5,12 @@ import type { QuestionFilter, SelectedFilters, TransformedFilters, TransformedPr
 import Button from "./Button";
 import { ProductsList } from "./ProductsList";
 import Question from "./Question";
-import QuestionStatus from "./QuestionStatus";
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 
 import NavKeysController, { NavKeyEvent, Action as NavKeyEventAction } from 'nav-keys'
 import QuestionsViewHeader from "./QuestionsViewHeader";
+import IntroductionScreen from "./IntroductionScreen";
+import { Entry, addEntry, getCurrentState, getEntries, updateCurrentState } from "../client/saveLocalState";
 
 const options = {
     allowHashchange: true,
@@ -19,7 +20,33 @@ const options = {
 const win = typeof window !== 'undefined' ? window : undefined
 const controller = win ? new NavKeysController(window.history, options) : null// both params are optional
 
-export function QuestionsView({ filters, products, initialUrl, }: { filters: TransformedFilters, products: TransformedProduct[], initialUrl: URL }) {
+type QuestionsViewProps = {
+    filters: TransformedFilters,
+    products: TransformedProduct[],
+    initialUrl: URL,
+    onShowInitialPage?: () => unknown,
+    initialFilters?: SelectedFilters | null
+}
+
+export default function QuestionsViewWrapper(props: QuestionsViewProps) {
+    const [started, setStarted] = useState(false)
+    const [initialFilters, setInitialFilters] = useState<SelectedFilters | null>(null)
+
+    function start(entry?: Entry) {
+        setStarted(true)
+        if (entry) {
+            setInitialFilters(entry.filters)
+        }
+    }
+
+    if (!started) {
+        return <IntroductionScreen onClickStart={start} />
+    }
+
+    return <QuestionsView {...props} onShowInitialPage={() => setStarted(false)} initialFilters={initialFilters} />
+}
+
+export function QuestionsView({ filters, products, onShowInitialPage, initialFilters }: QuestionsViewProps) {
     const flatQuestions = useMemo(() => {
         return flattenQuestions(filters)
     }, [filters])
@@ -34,7 +61,7 @@ export function QuestionsView({ filters, products, initialUrl, }: { filters: Tra
         return map
     }, [flatQuestions])
 
-    const [selectedFilters, setSelectedFilters] = useSelectedFiltersState(flatQuestions)
+    const [selectedFilters, setSelectedFilters] = useSelectedFiltersState(flatQuestions, initialFilters)
 
     const filteredProducts = useMemo(() => {
         return filterProducts(products, selectedFilters)
@@ -92,7 +119,9 @@ export function QuestionsView({ filters, products, initialUrl, }: { filters: Tra
     }
 
     function back() {
-        if (!canGoBack()) return
+        if (!canGoBack()) {
+            return onShowInitialPage?.()
+        }
         setSelectedFilters(selectedFilters.slice(0, -1))
         setNextFilterValue(selectedFilters[selectedFilters.length - 1])
     }
@@ -116,6 +145,20 @@ export function QuestionsView({ filters, products, initialUrl, }: { filters: Tra
     const canForward = useMemo(() => {
         return canGoForward()
     }, [nextFilterValue])
+
+    const title = `(${filterProducts.length} productos) ` + selectedFilters.map((filter, i) => {
+        return filter.values.map(value => filtersLabelsByValueKey.get(value) || value).join(" - ")
+    }).join(", ")
+
+    useEffect(() => {
+        updateCurrentState(selectedFilters, title)
+    }, [questionIndex, selectedFilters, nextFilterValue])
+
+    useEffect(() => {
+        if (isLast) {
+            addEntry(selectedFilters, title)
+        }
+    }, [isLast])
 
     // useEffect(() => {
     //     if (canForward && !controller?.isForwardButtonEnabled) {
@@ -146,13 +189,12 @@ export function QuestionsView({ filters, products, initialUrl, }: { filters: Tra
                 filtersLabelsByValueKey={filtersLabelsByValueKey}
             />
 
+            <Question key={question.key} question={{
+                ...question,
+                values: question.values.filter(value => !shouldIgnoreQuestionOption(filteredProducts, question, [value.key]))
+            }} onChange={setNextFilterValue} values={nextFilterValue?.values} />
+
             <div className="container">
-                <Question key={question.key} question={{
-                    ...question,
-                    values: question.values.filter(value => !shouldIgnoreQuestionOption(filteredProducts, question, [value.key]))
-                }} onChange={setNextFilterValue} values={nextFilterValue?.values} />
-
-
                 {(!isLast && (!showProducts && filteredProducts.length < SHOW_MAX_PRODUCTS)) && <a href="!#" className="text-primary font-semibold" onClick={(e) => {
                     e.preventDefault()
                     setShowProducts(true)
@@ -168,7 +210,7 @@ export function QuestionsView({ filters, products, initialUrl, }: { filters: Tra
             </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 py-[12px] px-[20px] shadow-[2px_0_10px_-3px_rgba(0,0,0,0.3)] flex justify-between">
-            <Button onClick={() => back()} disabled={!canGoBack()}>
+            <Button onClick={() => back()}>
                 Atrás
             </Button>
             <span></span>

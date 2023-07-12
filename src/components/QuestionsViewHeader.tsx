@@ -71,6 +71,7 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
             {divider}
 
             <div className="container">
+                {question.icon && <img src={`/icons/${question.icon}`} className="float-right mt-1" />}
                 <h2 className="text-xl lg:text-2xl font-semibold">{question.label}</h2>
                 {question.description && <p className="text-md font-medium">{question.description}</p>}
             </div>
@@ -105,13 +106,14 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
                     })}
                 </div>
 
-                <button type="button" id="scroll-right" className="hidden absolute right-0 top-0 py-[3px] pl-[6px] pr-[4px] bg-primary">
+                <button type="button" id="scroll-right" className="hidden absolute right-0 top-0 py-[4px] pl-[6px] pr-[4px] bg-primary">
                     {right}
                 </button>
-                <button type="button" id="scroll-left" className="hidden absolute left-0 top-0 py-[3px] pl-[9px] pr-[1px] bg-primary">
+                <button type="button" id="scroll-left" className="hidden absolute left-0 top-0 py-[4px] pl-[9px] pr-[1px] bg-primary">
                     {left}
                 </button>
 
+                {question.icon && <img src={`/icons/${question.icon}`} className="float-right h-[24px] invert" />}
                 <p className="my-1 text-white font-semibold lg:text-2xl">{question.label}</p>
             </div>
         </div>
@@ -121,11 +123,11 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
         return <>
             <div className="container">
                 <h1 className="text-2xl lg:text-5xl uppercase font-medium mt-[50px]">Guía de selección</h1>
-
             </div>
             {divider}
             <div className="container mb-3">
                 <h2 className="text-xl lg:text-2xl font-semibold">{productsCount === 1 ? `Se encontró un producto` : `Se encontraron ${productsCount} productos`}</h2>
+                <a href="/"><u>Volver al principio</u></a>
             </div>
         </>
     }
