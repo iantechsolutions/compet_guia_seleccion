@@ -19,7 +19,7 @@ export function ShowEntries({ onEntryClick }: { onEntryClick?: (entry: Entry) =>
 }
 
 function Card({ entry, onClick }: { entry: Entry, onClick?: () => unknown }) {
-    return <button className="py-2 text-left" onClick={onClick}>
+    return <button className="py-2 text-left w-full" onClick={onClick}>
         <h3 className="text-sm">{entry.title}</h3>
         <p className="text-sm float-right">{(new Date(entry.timestamp)).toLocaleDateString()}</p>
     </button>

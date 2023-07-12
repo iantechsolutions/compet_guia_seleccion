@@ -6,9 +6,13 @@ export type Entry = {
     title: string
 }
 
+function gtag(...args: any[]) {
+    return (window as any).gtag(...args)
+}
+
 export function updateCurrentState(selectedFilters: SelectedFilters, title: string) {
     // use localstorage
-    localStorage.setItem("current", JSON.stringify({filters: selectedFilters, title}));
+    localStorage.setItem("current", JSON.stringify({ filters: selectedFilters, title }));
 }
 
 export function getCurrentState(): Entry | null {
@@ -27,8 +31,12 @@ export function addEntry(selectedFilters: SelectedFilters, title: string) {
     const prefix = "entry_"
     const entry = prefix + Date.now();
 
+    gtag('event', 'completed_questions', {
+        'title': title,
+    });
+
     // use localstorage
-    localStorage.setItem(entry, JSON.stringify({filters: selectedFilters, title}));
+    localStorage.setItem(entry, JSON.stringify({ filters: selectedFilters, title }));
 }
 
 export function getEntries(): Entry[] {

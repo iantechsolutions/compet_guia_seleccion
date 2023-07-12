@@ -6,6 +6,10 @@ interface Props {
     showTitle?: boolean
 }
 
+function gtag(...args: any[]) {
+    return (window as any).gtag(...args)
+}
+
 export function ProductsList({ products, showTitle }: Props) {
     return <div>
         {/* {showTitle && <h1 className="my-2 text-lg">Se encontraron {products.length} productos</h1>} */}
@@ -32,16 +36,36 @@ export function ProductsList({ products, showTitle }: Props) {
 
                         {/* <a href={product.url} className="bg-primary text-white px-4 py-2 rounded-md text-sm whitespace-nowrap">Detalles</a> */}
                         <div className="flex gap-1">
-                            <a href={whatsappURL.href} target="_blank">
+                            <a href={whatsappURL.href} target="_blank" onClick={() => {
+                                gtag('event', 'contact_whatsapp', {
+                                    'message': message,
+                                    'product': product.text,
+                                })
+                            }}>
                                 <img src="/whatsapp.png" alt="Consultar por Whatsapp" className="h-[30px]" />
                             </a>
-                            <a href={mailUrl.href} target='_blank'>
+                            <a href={mailUrl.href} target='_blank' onClick={() => {
+                                gtag('event', 'contact_email', {
+                                    'message': message,
+                                    'product': product.text,
+                                })
+                            }}>
                                 <img src="/mail-with-circle.svg" alt="Consultar por email" className="h-[30px]" />
                             </a>
-                            {product.pdf && <a href={product.pdf} target='_blank'>
+                            {product.pdf && <a href={product.pdf} target='_blank' onClick={() => {
+                                gtag('event', 'contact_pdf', {
+                                    'message': message,
+                                    'product': product.text,
+                                })
+                            }}>
                                 <img src="/pdf.png" alt="Descargar PDF" className="h-[30px]" />
                             </a>}
-                            <a href={product.url || 'https://competsa.com/'} target='_blank'>
+                            <a href={product.url || 'https://competsa.com/'} target='_blank' onClick={() => {
+                                gtag('event', 'contact_webpage', {
+                                    'message': message,
+                                    'product': product.text,
+                                })
+                            }}>
                                 <img src="/sitio-web.png" alt="Sitio web" className="h-[30px]" />
                             </a>
 
