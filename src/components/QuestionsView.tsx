@@ -204,7 +204,7 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
                     setShowProducts(false)
                 }}>Ocultar productos</a>}
                 {(isLast || (showProducts && filteredProducts.length < SHOW_MAX_PRODUCTS)) && <>
-                    <ProductsList products={filteredProducts} showTitle={isLast} />
+                    <ProductsList products={filteredProducts} searchTitle={title} />
                 </>}
 
             </div>

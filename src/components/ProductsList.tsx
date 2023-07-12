@@ -3,21 +3,20 @@ import type { TransformedProduct } from "../util/types"
 
 interface Props {
     products: TransformedProduct[]
-    showTitle?: boolean
+    searchTitle: string
 }
 
 function gtag(...args: any[]) {
     return (window as any).gtag(...args)
 }
 
-export function ProductsList({ products, showTitle }: Props) {
+export function ProductsList({ products, searchTitle }: Props) {
     return <div>
-        {/* {showTitle && <h1 className="my-2 text-lg">Se encontraron {products.length} productos</h1>} */}
 
         {products.map(product => {
             const whatsappURL = new URL('https://api.whatsapp.com/send/?phone=5491140444515&type=phone_number')
 
-            const message = `Hola, me gustaría recibir información sobre:\n${product.text}`
+            const message = `Hola, me gustaría recibir información sobre:\n*${product.text}*\n\nBúsqueda:\n${searchTitle}`
 
             whatsappURL.searchParams.set('text', message)
 
