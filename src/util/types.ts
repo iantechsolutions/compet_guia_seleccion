@@ -12,8 +12,12 @@ export const productSchema = z.object({
     DESC_ADIC: z.string().optional(),
     DESCRIPCIO: z.string().optional(),
     TEXTO: z.string(),
+    OBSERVACIONES: z.string().optional(),
     FECHA_MODI: z.string().optional(),
-    "Incluido en Guia": z.string(),
+    "Incluido en Guia": z.string().optional().transform((value) => {
+        if(!value) return true
+        return value?.toLowerCase() === "si"
+    }),
     CAMPOS_ADICIONALES: z.string().optional().transform((value) => {
         if (!value) return {}
         const xmlParsed = parser.parse(value)
@@ -27,11 +31,15 @@ export const productSchema = z.object({
     }
 
     return {
-        shouldInclude: value["Incluido en Guia"]?.toLowerCase() === "si",
+        shouldInclude: value["Incluido en Guia"],
         code: value.COD_ARTICU,
         name: value.DESCRIPCIO,
         description: value.TEXTO,
-        params: additionalFields
+        text: value.TEXTO,
+        url: value.OBSERVACIONES,
+        params: additionalFields,
+        picture: null as null | string,
+        pdf: null as null | string,
     }
 })
 

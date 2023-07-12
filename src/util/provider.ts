@@ -3,6 +3,7 @@ import { type Product, type RawDataStructureDefinition, dataStructureDefinitionS
 import { extractFilters } from "../functions/extract_filters";
 import { transformProducts } from "../functions/transform_products";
 import yaml from "yaml";
+import { getDetailsFromUrl } from "./getDetailsFromUrl";
 
 let savedProducts: Product[] | null = null
 
@@ -15,7 +16,13 @@ export async function readProducts() {
     const data = await fs.readFile("./src/pages/api/data.json", "utf-8");
 
     // Parse products database and convert it to the correct type
-    const products = productsSchema.parse(JSON.parse(data));
+    let products = productsSchema.parse(JSON.parse(data));
+
+    // Get images from products
+    products = await Promise.all(products.map(async product => ({
+        ...product,
+        ...await getDetailsFromUrl(product.url)
+    })))
 
     savedProducts = products
 
@@ -50,7 +57,7 @@ export async function readQuestions() {
         questions: group.questions.map((question): QuestionFilter => {
             const filter = filters[question.key]
 
-            if(!filter) {
+            if (!filter) {
                 throw new Error(`Filter with key "${question.key}" not found`)
             }
 

@@ -19,23 +19,48 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+
 <style is:global>
-	*{
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+	:root {
+		--color-primary: #0d9fcf;
+	}
+
+	.bg-primary {
+		background-color: var(--color-primary);
+	}
+
+	.border-primary {
+		border-color: var(--color-primary);
+	}
+
+	.text-primary {
+		color: var(--color-primary);
+	}
+
+	* {
 		box-sizing: border-box;
 		outline: transparent;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+		font-family: "Poppins", sans-serif !important;
+		background-color: #f6f6f6;
 	}
 
 	.container {
 		margin: 0 auto;
 		object-position: center;
 		padding: 0 22.5px;
+	}
+
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* For IE, Edge and Firefox */
+	.scrollbar-hide {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
 	}
 </style>

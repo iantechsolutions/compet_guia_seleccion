@@ -13,13 +13,13 @@ export default function Button({ children, onClick, className, disabled }: Props
         onClick={onClick}
         className={classNames(className, [
             'px-5 py-2',
-            'rounded-lg',
+            'rounded-full',
             'shadow-md  ',
             'text-white',
             'font-semibold',
             {
                 'bg-gray-300': disabled,
-                'bg-blue-500': !disabled,
+                'bg-primary': !disabled,
             }
         ])}>
         {children}
