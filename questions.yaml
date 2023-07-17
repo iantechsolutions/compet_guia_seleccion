@@ -4,10 +4,8 @@ groups:
     questions:
       - key: CA_NIVEL_DE_TENSIN
         icon: voltage.svg
-        label: Nivel de voltage
+        label: Nivel de voltjge
         description: Rango de tensión en el que opera el equipo
-        icons:
-          "30 a 36 kV": "36kv.png"
       - key: CA_TIPO_DE_ACCESORIO
         label: Tipo de accesorio
       - key: CA_TECNOLOGA_PRINCIPAL
