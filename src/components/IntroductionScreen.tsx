@@ -19,14 +19,14 @@ export default function IntroductionScreen({ onClickStart }: { onClickStart: (en
 
         <div className="container">
 
-            <div className="grid gap-2 grid-cols-4 max-w-[400px] mx-auto mb-4">
+            {/* <div className="grid gap-2 grid-cols-4 max-w-[400px] mx-auto mb-4">
                 <img src="https://competsa.com/images/contenido/1633350112.jpg" alt="Conectores Enchufables Apantallados" className="aspect-square object-cover" />
                 <img src="https://competsa.com/images/contenido/1592504511.png" alt="Terminales contraíbles en frío" className="aspect-square" />
                 <img src="https://competsa.com/images/contenido/1597427805.png" alt="Terminales Termocontraíbles para Media Tensión" className="aspect-square" />
                 <img src="https://competsa.com/images/contenido/1595862601.png" alt="Gel de Silicona reentrable" className="aspect-square" />
-            </div>
+            </div> */}
 
-            <div className="text-center">
+            <div className="text-center my-[30px]">
                 <button
                     className="w-full sm:w-[400px] bg-primary shadow-md rounded-lg py-3 px-6 text-xl text-white"
                     onClick={() => onClickStart()}
@@ -45,13 +45,13 @@ export default function IntroductionScreen({ onClickStart }: { onClickStart: (en
 
             </div>
 
-            <div className="fixed bottom-3">
+            <div className="fixed bottom-0 left-0 px-4 py-2 bg-[#F6F6F6]">
                 <a href="https://competsa.com/" className="text-primary">
                     competsa.com
                 </a>
             </div>
 
-            <a href="https://www.iantech.com.ar/" class="fixed bottom-0 right-[1px] text-sm">
+            <a href="https://www.iantech.com.ar/" class="fixed bottom-0 right-[1px] text-sm px-2 py-1 bg-[#F6F6F6]">
                 Powered by <u>IANTECH</u>
             </a>
         </div>

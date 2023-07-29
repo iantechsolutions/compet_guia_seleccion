@@ -8,19 +8,21 @@ export function ShowEntries({ onEntryClick }: { onEntryClick?: (entry: Entry) =>
 
     if (!currentOk && entries.length === 0) return null
 
-    return <div className="mt-2">
+    return <div className="mt-10">
         {currentOk && <h2 className="font-medium text-lg">Continuar con</h2>}
 
         {currentOk && <Card entry={current} onClick={() => onEntryClick?.(current)} />}
         {entries.length > 0 && <h2 className="font-medium text-lg">Busquedas anteriores</h2>}
 
-        {entries.map(entry => <Card entry={entry} onClick={() => onEntryClick?.(entry)} />)}
+        <div class="grid md:grid-cols-2 gap-4">
+            {entries.map(entry => <Card entry={entry} onClick={() => onEntryClick?.(entry)} />)}
+        </div>
     </div>
 }
 
 function Card({ entry, onClick }: { entry: Entry, onClick?: () => unknown }) {
     return <button className="py-2 text-left w-full" onClick={onClick}>
+        <p className="text-sm font-medium">{(new Date(entry.timestamp)).toLocaleDateString()}</p>
         <h3 className="text-sm">{entry.title}</h3>
-        <p className="text-sm float-right">{(new Date(entry.timestamp)).toLocaleDateString()}</p>
     </button>
 }

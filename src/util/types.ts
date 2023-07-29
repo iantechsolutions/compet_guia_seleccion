@@ -165,6 +165,7 @@ export const importedQuestionFilterSchema = questionFilterSchema.pick({
     depends_on: true,
 }).and(z.object({
     icons: z.record(z.string()).optional().default({}),
+    questions_order: z.array(z.string()).optional().default([]),
 }))
 
 export const questionsGroupSchema = z.object({

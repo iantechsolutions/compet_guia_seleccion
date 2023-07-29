@@ -3,7 +3,7 @@ groups:
     type: group
     questions:
       - key: CA_NIVEL_DE_TENSIN
-        icon: voltage.svg
+        icon: voltaje.svg
         label: Nivel de voltjge
         description: Rango de tensión en el que opera el equipo
       - key: CA_TIPO_DE_ACCESORIO
@@ -12,10 +12,10 @@ groups:
         label: Tecnología principal
         large_options: true
         icons:
-          "Termocontraíble": "termocontraibles.png"
-          "Contraíble en frío": "contraibles_frio.png"
-          "Molde con resina reentrable": "silicona.png"
-          "Molde con resina no reentrable": "silicona.png"
+          "Termocontraíble": "termocontraible.svg"
+          "Contraíble en frío": "contraible_frio.svg"
+          "Molde con resina reentrable": "reentrable.svg"
+          "Molde con resina no reentrable": "reentrable.svg"
       - key: CA_CHECKBOX-GROUP_1684438454148
         label: Uso Interior/Exterior
   - label: Conductor principal
@@ -23,6 +23,11 @@ groups:
     questions:
       - key: CA_CHECKBOX-GROUP_1684413233368
         label: Número de fases del cable principal
+        options_order: -
+          - CA_CCA_UNIPOLAR
+          - CA_BIPOLAR
+          - CA_TRIPOLAR
+          - CA_TRIPOLAR__NEUTRO
       - key: CA_CHECKBOX-GROUP_1684413076075
         label: Tipo de Pantalla de la/s fase/s
       - key: CA_CHECKBOX-GROUP_1684430004592
