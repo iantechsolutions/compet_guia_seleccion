@@ -842,6 +842,30 @@
 			],
 			[
 				{
+					"type": "checkbox-group",
+					"label": "Incluye Conectores",
+					"name": "INCLUYE_CONECTORES",
+					"values": [
+						{
+							"label": "A tornillo fusible",
+							"value": "CA_A_TORNILLO_FUSIBLE",
+							"type": "checkbox"
+						},
+						{
+							"label": "A compresión",
+							"value": "CA_A_COMPRESIN",
+							"type": "checkbox"
+						},
+						{
+							"label": "A a perforación",
+							"value": "CA_A_PERFORMACIN",
+							"type": "checkbox"
+						}
+					]
+				}
+			],
+			[
+				{
 					"type": "select",
 					"label": "Interfaz / Corriente nominal de operación",
 					"name": "CA_INTERFAZ__CORRIENTE_NOMINAL_DE_OPERACIN",

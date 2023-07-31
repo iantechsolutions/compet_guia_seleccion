@@ -1,4 +1,5 @@
 import classNames from "classnames"
+import { Image } from "./Image"
 
 interface QuestionButtonProps {
     children: any,
@@ -20,7 +21,7 @@ export default function LargeOptionButton({ children, selected, icon, onClick }:
             'flex gap-1': icon,
         })}
     >
-        {icon && <img src={`/icons/${icon}`} className="h-[50px] my-2 rounded-xl" alt="Ícono" />}
+        {icon && <Image src={`/icons/${icon}`} className="h-[50px] my-2 rounded-xl" alt="Ícono" />}
         {children}
     </button>
 }

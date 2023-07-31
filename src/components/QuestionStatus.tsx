@@ -1,4 +1,5 @@
 import type { Product, QuestionFilter, SelectedFilters } from "../util/types"
+import { Image } from "./Image"
 
 interface Props {
     question: QuestionFilter
@@ -15,7 +16,7 @@ export default function QuestionStatus({ question, index, filteredProducts, back
 
     return <div className="py-2 px-2 bg-primary text-white mt-5 flex align-items-center">
 
-        {icon && <img src={`/icons/${icon}`} className="h-[50px] mr-2" />}
+        {icon && <Image src={`/icons/${icon}`} className="h-[50px] mr-2" />}
 
         <div className="max-w-full">
             {selectedFilters.length > 0 && <div className="px-2 py-0 bg-primary rounded-full whitespace-nowrap text-ellipsis overflow-hidden max-w-full">

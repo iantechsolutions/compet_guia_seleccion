@@ -61,13 +61,39 @@ export async function readQuestions() {
                 throw new Error(`Filter with key "${question.key}" not found`)
             }
 
+            let values = filter.values.map(value => ({
+                ...value,
+                icon: question.icons[value.key]
+            }))
+
+            values = values.sort((a, b) => {
+                const indexA = question.options_order.indexOf(a.key)
+                const indexB = question.options_order.indexOf(b.key)
+                if(indexA === -1) {
+                    return 1
+                }
+
+                if(indexB === -1) {
+                    return -1
+                }
+
+                if(indexA > indexB) {
+                    return 1
+                }
+
+                if(indexA < indexB) {
+                    return -1
+                }
+
+                return 0
+            })
+
+            console.log(values)
+
             return {
                 ...question,
                 type: "question",
-                values: filter.values.map(value => ({
-                    ...value,
-                    icon: question.icons[value.key]
-                }))
+                values: values,
             }
         })
     }))

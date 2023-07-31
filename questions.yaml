@@ -8,14 +8,21 @@ groups:
         description: Rango de tensión en el que opera el equipo
       - key: CA_TIPO_DE_ACCESORIO
         label: Tipo de accesorio
+        large_options: true
+        icons:
+          "Empalme Recto": "empalme_recto.svg"
+          "Empalme derivación": "empalme_derivacion.svg"
+          "Terminación": "terminal.png"
+          "Separable/Enchufable (norma IEC)": "enchufables.svg"
+          "Empalme para bombas sumergibles": "empalme_bomba_sumergible.svg"
       - key: CA_TECNOLOGA_PRINCIPAL
         label: Tecnología principal
         large_options: true
         icons:
-          "Termocontraíble": "termocontraible.svg"
-          "Contraíble en frío": "contraible_frio.svg"
-          "Molde con resina reentrable": "reentrable.svg"
-          "Molde con resina no reentrable": "reentrable.svg"
+          "Termocontraíble": "termocontraible.png"
+          "Contraíble en frío": "contraible_frio.png"
+          "Molde con resina reentrable": "reentrable.png"
+          "Molde con resina no reentrable": "reentrable.png"
       - key: CA_CHECKBOX-GROUP_1684438454148
         label: Uso Interior/Exterior
   - label: Conductor principal
@@ -23,7 +30,7 @@ groups:
     questions:
       - key: CA_CHECKBOX-GROUP_1684413233368
         label: Número de fases del cable principal
-        options_order: -
+        options_order:
           - CA_CCA_UNIPOLAR
           - CA_BIPOLAR
           - CA_TRIPOLAR
@@ -67,6 +74,11 @@ groups:
         label: Cable derivado tetrapolar (mm2)
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR__NEUTRO
+  - label: Conectores
+    type: group
+    questions:
+      - key: INCLUYE_CONECTORES
+        label: Incluye Conectores
   - label: Últimas preguntas
     type: group
     questions:

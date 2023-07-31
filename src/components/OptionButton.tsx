@@ -1,5 +1,6 @@
 import classNames from "classnames"
 import LargeOptionButton from "./LargeOptionButton"
+import { Image } from "./Image"
 
 interface QuestionButtonProps {
     children: any,
@@ -20,7 +21,7 @@ export default function QuestionButton({ children, selected, icon, onClick, larg
             'bg-primary text-white': selected,
         })}
     >
-        {icon && <img src={`/icons/${icon}`} alt="Ícono" className={classNames("absolute left-0 h-[28px] pl-[6px]", {
+        {icon && <Image src={`/icons/${icon}`} alt="Ícono" className={classNames("absolute left-0 h-[28px] pl-[8px]", {
             'invert': selected,
         })} />}
         {children}

@@ -11,7 +11,7 @@ function gtag(...args: any[]) {
 }
 
 export function ProductsList({ products, searchTitle }: Props) {
-    return <div>
+    return <div className="lg:grid lg:grid-cols-2 gap-[22.5px]">
 
         {products.map(product => {
             const whatsappURL = new URL('https://api.whatsapp.com/send/?phone=5491140444515&type=phone_number')
