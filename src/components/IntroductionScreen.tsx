@@ -1,9 +1,29 @@
-import { useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 import { QuestionsView } from "./QuestionsView"
 import { ShowEntries } from "./ShowEntries"
 import type { Entry } from "../client/saveLocalState"
 
 export default function IntroductionScreen({ onClickStart }: { onClickStart: (entry?: Entry) => unknown }) {
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        setLoaded(true)
+    }, [])
+
+    const loader = <div>
+        <div style={`
+        position: relative;
+        box-sizing: border-box;
+        display: block;
+        margin: auto;
+        height: 32px;
+        width: 32px;
+        border: 6px solid #AAAAAA;
+        border-top: 6px solid white;
+        border-radius: 50%;
+    `} class={'animate-spin'}></div>
+    </div>
+
     return <div>
         <header className="container">
             <a href="https://competsa.com/">
@@ -28,10 +48,14 @@ export default function IntroductionScreen({ onClickStart }: { onClickStart: (en
 
             <div className="text-center my-[30px]">
                 <button
-                    className="w-full sm:w-[400px] bg-primary shadow-md rounded-lg py-3 px-6 text-xl text-white"
+                    className="w-full sm:w-[400px] bg-primary shadow-md rounded-lg py-3 px-6 text-xl text-white mx-auto grid grid-cols-[32px_1fr_32px] gap-3"
+
                     onClick={() => onClickStart()}
                 >
-                    Empezar
+                    {loaded  ? <div /> : loader}
+                    <p>
+                        Empezar
+                    </p>
                 </button>
             </div>
 
