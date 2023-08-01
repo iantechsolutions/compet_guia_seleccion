@@ -4,7 +4,7 @@ groups:
     questions:
       - key: CA_NIVEL_DE_TENSIN
         icon: voltaje.svg
-        label: Nivel de voltjge
+        label: Nivel de voltaje
         description: Rango de tensión en el que opera el equipo
       - key: CA_TIPO_DE_ACCESORIO
         label: Tipo de accesorio
@@ -30,6 +30,11 @@ groups:
     questions:
       - key: CA_CHECKBOX-GROUP_1684413233368
         label: Número de fases del cable principal
+        icons:
+          "CA_CCA_UNIPOLAR": "unipolar.svg"
+          "CA_BIPOLAR": "bipolar.svg"
+          "CA_TRIPOLAR": "tetrapolar.svg"
+          "CA_TRIPOLAR__NEUTRO": "tripolar_neutro.svg"
         options_order:
           - CA_CCA_UNIPOLAR
           - CA_BIPOLAR
@@ -38,19 +43,19 @@ groups:
       - key: CA_CHECKBOX-GROUP_1684413076075
         label: Tipo de Pantalla de la/s fase/s
       - key: CA_CHECKBOX-GROUP_1684430004592
-        label: Sección de cable ppal. unipolar
+        label: Sección de cable principal unipolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_CCA_UNIPOLAR
       - key: CA_CHECKBOX-GROUP_1684430443116
-        label: Cable ppal. bipolar (mm2)
+        label: Sección de cable principal bipolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_BIPOLAR
       - key: CA_CHECKBOX-GROUP_1684430969197
-        label: Cable ppal. tripolar (mm2)
+        label: Sección de cable principal tripolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR
       - key: CA_CHECKBOX-GROUP_1684431095631
-        label: Cable ppal. tripolar con neutro (mm2)
+        label: Sección de cable principal tripolar con neutro mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR__NEUTRO
   - label: Conductor derivado
@@ -58,20 +63,30 @@ groups:
     questions:
       - key: CA_CHECKBOX-GROUP_1684413315284
         label: Cantidad de fases del cable derivado
+        options_order:
+          - CA_CAD_UNIPOLAR
+          - CA_CAD_BIPOLAR
+          - CA_CAD_TRIPOLAR
+          - CA_CAD_TRIPOLAR__NEUTRO
+        icons:
+          "CA_CAD_UNIPOLAR": "unipolar.svg"
+          "CA_CAD_BIPOLAR": "bipolar.svg"
+          "CA_TRIPOLAR": "tetrapolar.svg"
+          "CA_CAD_TRIPOLAR__NEUTRO": "tripolar_neutro.svg"
       - key: CA_CHECKBOX-GROUP_1684431809461
-        label: Cable derivado unipolar (mm2)
+        label: Sección de cable derivado unipolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_CCA_UNIPOLAR
       - key: CA_CHECKBOX-GROUP_1684431991660
-        label: Cable derivado bipolar (mm2)
+        label: Sección de cable derivado bipolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_BIPOLAR
       - key: CA_CHECKBOX-GROUP_1684432348609
-        label: Cable derivado tripolar (mm2)
+        label: Sección de cable derivado tripolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR
       - key: CA_CHECKBOX-GROUP_1684432894891
-        label: Cable derivado tetrapolar (mm2)
+        label: Sección de cable derivado tetrapolar mm²
         depends_on:
           CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR__NEUTRO
   - label: Conectores
@@ -79,6 +94,11 @@ groups:
     questions:
       - key: INCLUYE_CONECTORES
         label: Incluye Conectores
+        large_options: true
+        icons:
+          "CA_A_TORNILLO_FUSIBLE": "tornillo_fusible.svg"
+          "CA_A_COMPRESIN": "compresion.svg"
+          "CA_A_PERFORMACIN": "perforacion.svg"
   - label: Últimas preguntas
     type: group
     questions:

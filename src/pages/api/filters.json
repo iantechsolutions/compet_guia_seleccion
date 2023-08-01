@@ -548,67 +548,67 @@
 								"name": "CA_CHECKBOX-GROUP_1684431809461",
 								"values": [
 									{
-										"label": "1x4",
+										"label": "1 x 4",
 										"value": "CA_CAQ_1X4",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x6",
+										"label": "1 x 6",
 										"value": "CA_CAQ_1X6",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x10",
+										"label": "1 x 10",
 										"value": "CA_CAQ_1X10",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x16",
+										"label": "1 x 16",
 										"value": "CA_CAQ_1X16",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x25",
+										"label": "1 x 25",
 										"value": "CA_CAQ_1X25",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x35",
+										"label": "1 x 35",
 										"value": "CA_CAQ_1X35",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x50",
+										"label": "1 x 50",
 										"value": "CA_CAQ_1X50",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x70",
+										"label": "1 x 70",
 										"value": "CA_CAQ_1X70",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x95",
+										"label": "1 x 95",
 										"value": "CA_CAQ_1X95",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x120",
+										"label": "1 x 120",
 										"value": "CA_CAQ_1X120",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x150",
+										"label": "1 x 150",
 										"value": "CA_CAQ_1X150",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x185",
+										"label": "1 x 185",
 										"value": "CA_CAQ_1X185",
 										"type": "checkbox"
 									},
 									{
-										"label": "1x240",
+										"label": "1 x 240",
 										"value": "CA_CAQ_1X240",
 										"type": "checkbox"
 									}
@@ -622,42 +622,42 @@
 								"name": "CA_CHECKBOX-GROUP_1684431991660",
 								"values": [
 									{
-										"label": "2x1,5",
+										"label": "2 x 1,5",
 										"value": "CA_WCA_2X15",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x2,5",
+										"label": "2 x 2,5",
 										"value": "CA_WCA_2X25",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x4",
+										"label": "2 x 4",
 										"value": "CA_WCA_2X4",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x6",
+										"label": "2 x 6",
 										"value": "CA_WCA_2X6",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x10",
+										"label": "2 x 10",
 										"value": "CA_WCA_2X10",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x16",
+										"label": "2 x 16",
 										"value": "CA_WCA_2X16",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x25",
+										"label": "2 x 25",
 										"value": "CA_SCA_2X25",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x35",
+										"label": "2 x 35",
 										"value": "CA_SCA_2X35",
 										"type": "checkbox"
 									}
