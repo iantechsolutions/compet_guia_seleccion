@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect } from "preact/hooks";
 import type { QuestionFilter, SelectedFilters } from "../util/types";
 import { Image } from "./Image";
+import ContactLinks from "./ContactLinks";
 
 export type QuestionViewHeaderProps = {
     question: QuestionFilter,
@@ -137,6 +138,7 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
             </div>
             {divider}
             <div className="container mb-3">
+                <ContactLinks />
                 <h2 className="text-xl lg:text-2xl font-semibold">{productsCount === 1 ? `Se encontró un producto` : `Se encontraron ${productsCount} productos`}</h2>
                 <a href="/"><u>Volver al principio</u></a>
             </div>

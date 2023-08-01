@@ -2,6 +2,7 @@ import { useEffect, useState } from "preact/hooks"
 import { QuestionsView } from "./QuestionsView"
 import { ShowEntries } from "./ShowEntries"
 import type { Entry } from "../client/saveLocalState"
+import ContactLinks from "./ContactLinks"
 
 export default function IntroductionScreen({ onClickStart }: { onClickStart: (entry?: Entry) => unknown }) {
     const [loaded, setLoaded] = useState(false)
@@ -45,18 +46,14 @@ export default function IntroductionScreen({ onClickStart }: { onClickStart: (en
                 <img src="https://competsa.com/images/contenido/1597427805.png" alt="Terminales Termocontraíbles para Media Tensión" className="aspect-square" />
                 <img src="https://competsa.com/images/contenido/1595862601.png" alt="Gel de Silicona reentrable" className="aspect-square" />
             </div> */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-3">
-                <p>ventas@competsa.com</p>
-                <p>Teléfono: (+54) 11 4770 7438</p>
-                <p>Whatsapp: (+54) 11 4770 7438</p>
-            </div>
+            <ContactLinks />
             <div className="text-center my-[30px]">
                 <button
                     className="w-full sm:w-[400px] bg-primary shadow-md rounded-lg py-3 px-6 text-xl text-white mx-auto grid grid-cols-[32px_1fr_32px] gap-3"
 
                     onClick={() => onClickStart()}
                 >
-                    {loaded  ? <div /> : loader}
+                    {loaded ? <div /> : loader}
                     <p>
                         Empezar
                     </p>
