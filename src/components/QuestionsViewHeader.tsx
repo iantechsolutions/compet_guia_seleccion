@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect } from "preact/hooks";
 import type { QuestionFilter, SelectedFilters } from "../util/types";
+import { Image } from "./Image";
 
 export type QuestionViewHeaderProps = {
     question: QuestionFilter,
@@ -65,7 +66,12 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
         return <>
             <header className="container">
                 <h1 className="text-2xl lg:text-5xl mt-10 mb-2 lg:mt-[80px] lg:mb-[20px] uppercase font-medium">Guía de selección</h1>
-                <h2 className="text-md sm:text-lg lg:text-2xl font-bold">Elija una opción y presione siguiente</h2>
+                <div className="flex justify-between">
+                    <h2 className="text-md sm:text-lg lg:text-2xl font-bold">Elija una opción y presione siguiente</h2>
+                    <a href="/">
+                        <Image src="/home.png" className="h-[32px]" />
+                    </a>
+                </div>
             </header>
 
             {divider}
@@ -114,7 +120,12 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
                 </button>
 
                 {question.icon && <img src={`/icons/${question.icon}`} className="float-right h-[24px] invert" />}
-                <p className="my-1 text-white font-semibold lg:text-2xl">{question.label}</p>
+                <div className="flex justify-between">
+                    <p className="my-1 text-white font-semibold lg:text-2xl">{question.label}</p>
+                    <a href="/">
+                        <Image src="/home.png" className="h-[24px] sm:h-[28px] min-w-[24px] sm:min-w-[28px] invert mt-[4px]" />
+                    </a>
+                </div>
             </div>
         </div>
     }
