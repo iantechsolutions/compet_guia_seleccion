@@ -4,6 +4,10 @@ export function filterProducts(products: TransformedProduct[], filters: Selected
     return products.filter(product => {
 
         for(const filter of filters) {
+            if(filter.values.length == 1 && filter.values[0] == '__skip_question') {
+                continue
+            } 
+
             const intersection = arrayValuesIntersection(product.extracted_params[filter.key], filter.values)
 
             if(intersection.length == 0) {

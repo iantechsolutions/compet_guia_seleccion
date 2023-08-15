@@ -11,6 +11,7 @@ import NavKeysController, { NavKeyEvent, Action as NavKeyEventAction } from 'nav
 import QuestionsViewHeader from "./QuestionsViewHeader";
 import IntroductionScreen from "./IntroductionScreen";
 import { Entry, addEntry, getCurrentState, getEntries, updateCurrentState } from "../client/saveLocalState";
+import { mapSelectedFilters } from "../util/mapSelectedFilters";
 
 const options = {
     allowHashchange: true,
@@ -165,9 +166,9 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
         return canGoForward()
     }, [nextFilterValue])
 
-    const title = `(${filterProducts.length} productos) ` + selectedFilters.map((filter, i) => {
-        return filter.values.map(value => filtersLabelsByValueKey.get(value) || value).join(" - ")
-    }).join(", ")
+    const title = `(${filterProducts.length} productos) ` + (mapSelectedFilters(selectedFilters, filtersLabelsByValueKey, (filter, l) => {
+        return l
+    }).join(", "))
 
     useEffect(() => {
         updateCurrentState(selectedFilters, title)

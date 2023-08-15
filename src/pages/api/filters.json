@@ -284,23 +284,23 @@
 								"name": "CA_CHECKBOX-GROUP_1684430443116",
 								"values": [
 									{
-										"label": "2x01,5",
-										"value": "CA_2X015",
+										"label": "2x1,5",
+										"value": "CA_2x15",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x02,5",
-										"value": "CA_2X025",
+										"label": "2x2,5",
+										"value": "CA_2x25",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x04",
-										"value": "CA_2X04",
+										"label": "2x4",
+										"value": "CA_2x4",
 										"type": "checkbox"
 									},
 									{
-										"label": "2x06",
-										"value": "CA_2X06",
+										"label": "2x6",
+										"value": "CA_2x6",
 										"type": "checkbox"
 									},
 									{
@@ -333,23 +333,23 @@
 								"name": "CA_CHECKBOX-GROUP_1684430969197",
 								"values": [
 									{
-										"label": "3x01,5",
-										"value": "CA_3X015",
+										"label": "3x1,5",
+										"value": "CA_3x15",
 										"type": "checkbox"
 									},
 									{
-										"label": "3x02x5",
-										"value": "CA_3X02X5",
+										"label": "3x2x5",
+										"value": "CA_3x2X5",
 										"type": "checkbox"
 									},
 									{
-										"label": "3x04",
-										"value": "CA_3X04",
+										"label": "3x4",
+										"value": "CA_3x4",
 										"type": "checkbox"
 									},
 									{
-										"label": "3x06",
-										"value": "CA_3X06",
+										"label": "3x6",
+										"value": "CA_3x6",
 										"type": "checkbox"
 									},
 									{
@@ -422,23 +422,23 @@
 								"name": "CA_CHECKBOX-GROUP_1684431095631",
 								"values": [
 									{
-										"label": "4x01,5",
-										"value": "CA_4X015",
+										"label": "4x1,5",
+										"value": "CA_4x15",
 										"type": "checkbox"
 									},
 									{
-										"label": "4x02,5",
-										"value": "CA_4X025",
+										"label": "4x2,5",
+										"value": "CA_4x25",
 										"type": "checkbox"
 									},
 									{
-										"label": "4x04",
-										"value": "CA_4X04",
+										"label": "4x4",
+										"value": "CA_4x4",
 										"type": "checkbox"
 									},
 									{
-										"label": "4x06",
-										"value": "CA_4X06",
+										"label": "4x6",
+										"value": "CA_4x6",
 										"type": "checkbox"
 									},
 									{

@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect } from "preact/hooks";
 import type { QuestionFilter, SelectedFilters } from "../util/types";
 import { Image } from "./Image";
 import ContactLinks from "./ContactLinks";
+import { mapSelectedFilters } from "../util/mapSelectedFilters";
 
 export type QuestionViewHeaderProps = {
     question: QuestionFilter,
@@ -64,33 +65,6 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
         <hr className="border-none h-[4px] bg-primary mt-5 mb-5" />
     </div>
 
-    if (isFirst) {
-        return <>
-            <header className="container">
-                <h1 className="text-2xl lg:text-5xl mt-10 mb-2 lg:mt-[80px] lg:mb-[20px] font-medium">Accesorios para cables subterráneos</h1>
-                <div className="flex justify-between">
-                    <h2 className="text-md sm:text-lg lg:text-2xl font-bold">Elija una opción y presione siguiente</h2>
-                    <a href="/" onClick={(e) => {
-                        e.preventDefault()
-                        resetToHome()
-                    }}>
-                        <Image src="/home.png" className="h-[32px]" />
-                    </a>
-                </div>
-            </header>
-
-            {divider}
-
-            <div className="container">
-                {question.icon && <img src={`/icons/${question.icon}`} className="float-right mt-1" />}
-                <h2 className="text-xl lg:text-2xl font-semibold">{question.label}</h2>
-                {question.description && <p className="text-md font-medium">{question.description}</p>}
-            </div>
-        </>
-    }
-
-
-
     useLayoutEffect(updateScrollButtons)
 
     useEffect(() => {
@@ -106,16 +80,18 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
         }
     }, [])
 
-    if (!isFirst && !isLast) {
+    if (!isLast) {
         return <div className="bg-primary py-2">
             <div className="container relative">
-                <div className="my-2 flex gap-2 overflow-x-auto scrollbar-hide">
-                    {selectedFilters.map((filter, i) => {
-                        return filter.values.map(value => filtersLabelsByValueKey.get(value) || value).join(" - ")
-                    }).map((label, i) => {
+                {isFirst && <div className="my-2 flex gap-2 text-white font-medium">
+                    Elija una opción y presione siguiente
+                </div>}
+                {!isFirst && <div className="my-2 flex gap-2 overflow-x-auto scrollbar-hide">
+                    {mapSelectedFilters(selectedFilters, filtersLabelsByValueKey, (filter, label, i) => {
                         return <span className="text-white text-md px-2 py-[1px] rounded-full block whitespace-nowrap" style={{ backgroundColor: '#2CA9D2' }}>{label}</span>
                     })}
-                </div>
+                </div>}
+
 
                 <button type="button" id="scroll-right" className="hidden absolute right-0 top-0 py-[4px] pl-[6px] pr-[4px] bg-primary">
                     {right}
@@ -124,7 +100,7 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
                     {left}
                 </button>
 
-                {question.icon && <img src={`/icons/${question.icon}`} className="float-right h-[24px] invert" />}
+                {/* {(question.icon && !isFirst) && <img src={`/icons/${question.icon}`} className="float-right h-[24px] invert" />} */}
                 <div className="flex justify-between">
                     <p className="my-1 text-white font-semibold lg:text-2xl">{question.label}</p>
                     <a href="/" onClick={(e) => {

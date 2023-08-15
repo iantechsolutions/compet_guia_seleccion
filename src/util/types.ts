@@ -148,6 +148,9 @@ export const questionFilterSchema = z.object({
     type: z.literal('question'),
     large_options: z.boolean().optional().default(false),
     icon: z.string().optional(),
+    skippable: z.boolean().optional().default(false),
+    skip_label: z.string().optional(),
+    skip_icon: z.string().optional(),
     depends_on: z.record(z.string()).optional().default({}),
     values: z.array(z.object({
         label: z.string(),
@@ -163,6 +166,9 @@ export const importedQuestionFilterSchema = questionFilterSchema.pick({
     description: true,
     large_options: true,
     depends_on: true,
+    skip_icon: true,
+    skip_label: true,
+    skippable: true,
 }).and(z.object({
     icons: z.record(z.string()).optional().default({}),
     options_order: z.array(z.string()).optional().default([]),
@@ -195,9 +201,11 @@ export type TransformedFilters = z.infer<typeof transformedFiltersSchema>
 
 export type ArrayElement<A> = A extends readonly (infer T)[] ? T : never
 
-export type SelectedFilters = {
+export type SelectedFilter = {
     key: string
     questionIndex: number
     values: string[]
     question: QuestionFilter
-}[]
+}
+
+export type SelectedFilters = SelectedFilter[]

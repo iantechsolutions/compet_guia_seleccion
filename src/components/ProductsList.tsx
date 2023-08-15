@@ -17,14 +17,14 @@ export function ProductsList({ products, searchTitle }: Props) {
             const whatsappURL = new URL('https://api.whatsapp.com/send/?phone=5491140444515&type=phone_number')
             const phoneURL = new URL('tel:+541147707438')
 
+            const lineJump = encodeURIComponent('\n')
+
             const message = `Hola, me gustaría recibir información sobre:\n*(código: ${product.code}) ${product.text}*\n\nBúsqueda:\n${searchTitle}`
+            const mailMessage = `Hola, me gustaría recibir información sobre:${lineJump}*(código: ${product.code}) ${product.text}*${lineJump}${lineJump}Búsqueda:\n${searchTitle}`
 
             whatsappURL.searchParams.set('text', message)
 
-            const mailUrl = new URL('mailto:ventas@competsa.com')
-
-            mailUrl.searchParams.set('subject', `Consulta sobre ${product.text} (${product.code})`)
-            mailUrl.searchParams.set('body', message)
+            let mailUrl = `mailto:ventas@competsa.com?subject=Consulta sobre ${product.text} (${product.code})&body=${mailMessage}`
 
             return <div className="flex flex-row md:items-center md:justify-between border-b border-gray-200 py-4 last:border-none">
                 <div className="flex flex-row md:items-center gap-2">
@@ -54,7 +54,7 @@ export function ProductsList({ products, searchTitle }: Props) {
                             }}>
                                 <img src="/whatsapp.png" alt="Consultar por Whatsapp" className="h-[30px]" />
                             </a>
-                            <a href={mailUrl.href} target='_blank' onClick={() => {
+                            <a href={mailUrl} target='_blank' onClick={() => {
                                 gtag('event', 'contact_email', {
                                     'message': message,
                                     'product_info': product.text,

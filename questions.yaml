@@ -21,10 +21,15 @@ groups:
         icons:
           "Termocontraíble": "termocontraible.png"
           "Contraíble en frío": "contraible_frio.png"
+          "Deslizable (push-on)": "deslizable.png"
           "Molde con resina reentrable": "reentrable.png"
-          "Molde con resina no reentrable": "reentrable.png"
+          "Molde con resina no reentrable": "no_reentrable.png"
       - key: CA_CHECKBOX-GROUP_1684438454148
         label: Uso Interior/Exterior
+        large_options: true
+        icons:
+          "CA_CAT_USO_INTERIOR": "interior.png"
+          "CA_CAT_USO_EXTERIOR": "exterior.png"
   - label: Conductor principal
     type: group
     questions:
@@ -42,6 +47,9 @@ groups:
           - CA_TRIPOLAR__NEUTRO
       - key: CA_CHECKBOX-GROUP_1684413076075
         label: Tipo de Pantalla de la/s fase/s
+        icons:
+          "CA_ALAMBRES": "alambre.png"
+          "CA_CINTAS_O_ALAMBRES": "cintas.png"
       - key: CA_CHECKBOX-GROUP_1684430004592
         label: Sección de cable principal unipolar mm²
         depends_on:
@@ -71,7 +79,7 @@ groups:
         icons:
           "CA_CAD_UNIPOLAR": "unipolar.svg"
           "CA_CAD_BIPOLAR": "bipolar.svg"
-          "CA_TRIPOLAR": "tetrapolar.svg"
+          "CA_CAD_TRIPOLAR": "tetrapolar.svg"
           "CA_CAD_TRIPOLAR__NEUTRO": "tripolar_neutro.svg"
       - key: CA_CHECKBOX-GROUP_1684431809461
         label: Sección de cable derivado unipolar mm²
@@ -95,10 +103,13 @@ groups:
       - key: INCLUYE_CONECTORES
         label: Incluye Conectores
         large_options: true
+        skippable: true
+        skip_label: "No incluye conectores"
+        skip_icon: "clear.png"
         icons:
-          "CA_A_TORNILLO_FUSIBLE": "tornillo_fusible.svg"
-          "CA_A_COMPRESIN": "compresion.svg"
-          "CA_A_PERFORMACIN": "perforacion.svg"
+          "CA_A_TORNILLO_FUSIBLE": "tornillo_fusible.png"
+          "CA_A_COMPRESIN": "compresion.png"
+          "CA_A_PERFORMACIN": "perforacion.png"
   - label: Últimas preguntas
     type: group
     questions:
@@ -108,6 +119,11 @@ groups:
           CA_TIPO_DE_ACCESORIO: Separable/Enchufable (norma IEC)
       - key: CA_TIPO_DE_SEPARABLE
         label: Tipo de separable
+        icons:
+          "T Asimétrica": "t_asimetrica.png"
+          "Codo": "codo.png"
+          "Conector de acoplamiento": "conector_acoplamiento.png"
+          "Enchufe recto": "enchufe_recto.png"
         depends_on:
           CA_TIPO_DE_ACCESORIO: Separable/Enchufable (norma IEC)
       - key: CA_SISTEMA_DE_SUJECIN

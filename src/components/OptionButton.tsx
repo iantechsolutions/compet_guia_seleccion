@@ -24,9 +24,7 @@ export default function QuestionButton({ children, selected, icon, onClick, larg
             'text-sm': children.length >= 30,
         })}
     >
-        {icon && <Image src={`/icons/${icon}`} alt="Ícono" className={classNames("absolute left-0 h-[28px] pl-[8px]", {
-            'invert': selected,
-        })} />}
+        {icon && <Image src={`/icons/${icon}`} alt="Ícono" className={classNames("absolute left-0 h-[28px] pl-[8px]")} />}
         {children}
     </button>
 }

@@ -88,7 +88,7 @@ export async function readQuestions() {
                 return 0
             })
 
-            console.log(values)
+            console.log(question)
 
             return {
                 ...question,

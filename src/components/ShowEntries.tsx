@@ -1,4 +1,5 @@
 import { Entry, getCurrentState, getEntries } from "../client/saveLocalState";
+import { mapSelectedFilters } from "../util/mapSelectedFilters";
 
 
 export function ShowEntries({ onEntryClick, filtersLabelsByValueKey }: { onEntryClick?: (entry: Entry) => unknown, filtersLabelsByValueKey: Map<string, string> }) {
@@ -20,12 +21,10 @@ export function ShowEntries({ onEntryClick, filtersLabelsByValueKey }: { onEntry
 
 
     function Card({ entry, onClick }: { entry: Entry, onClick?: () => unknown }) {
-        const c = entry.filters.map((filter, i) => {
-            return filter.values.map(value => filtersLabelsByValueKey.get(value) || value).join(" - ")
-        }).map((label, i) => {
+        const c = mapSelectedFilters(entry.filters, filtersLabelsByValueKey, (filter, label, i) => {
             return <span className="shadow-sm bg-white text-md px-2 py-[1px] rounded-full block whitespace-nowrap">{label}</span>
         })
-
+        
         return <button className="py-2 text-left w-full border-l-4 px-2 border-stone-300 bg-stone-200 mb-5" onClick={onClick}>
             {/* <h3 className="text-sm">{entry.title}</h3> */}
             {/* <p className="text-sm font-medium">{(new Date(entry.timestamp)).toLocaleDateString()}</p> */}

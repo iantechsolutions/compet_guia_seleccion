@@ -21,6 +21,14 @@ export default function Question({ question, values, onChange }: QuestionProps) 
                             onChange?.({ key: question.key, values: [qval.key] })
                         }}>{qval.label}</QuestionButton>
                 })}
+                {question.skippable && <QuestionButton
+                    icon={question.skip_icon ?? 'clear.png'}
+                    key={'__skip_question'}
+                    large={question.large_options}
+                    selected={!!(values?.findIndex(v => '__skip_question' === v) != -1 && values)}
+                    onClick={() => {
+                        onChange?.({ key: question.key, values: ['__skip_question'] })
+                    }}>{question.skip_label ?? 'Saltar pregunta'}</QuestionButton>}
             </div>
         </div>
     </div>
