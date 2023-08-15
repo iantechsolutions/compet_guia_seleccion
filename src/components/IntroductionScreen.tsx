@@ -28,12 +28,15 @@ export default function IntroductionScreen({ onClickStart, filtersLabelsByValueK
 
     return <>
         <div className={'min-h-[calc(90vh_-_100px)]'}>
-            <header className="container">
+            <header className="container relative">
+
                 <a href="https://competsa.com/">
-                    <img src="/compet.png" alt="Compet S.A" className="h-[60px] float-right" />
+                    <img src="/compet.png" alt="Compet S.A" className="h-[60px] mx-auto mt-[40px] md:mt-0 md:absolute md:top-0 md:right-0" />
                 </a>
-                <h1 className="text-2xl lg:text-5xl mt-10 lg:mt-[80px] lg:mb-[20px] font-medium">Accesorios para cables subterráneos</h1>
-                <p>Mediante esta guía de selección ud. podrá encontrar el kit adecuado según el nivel de tensión, tipo/sección de cable y categoría de accesorio necesario.
+
+                <h1 className="text-2xl lg:text-5xl mt-10 mb-2 lg:mt-[80px] lg:mb-[20px] font-medium">Accesorios para cables subterráneos</h1>
+
+                <p className="sm:text-lg">Mediante esta guía de selección ud. podrá encontrar el kit adecuado según el nivel de tensión, tipo/sección de cable y categoría de accesorio necesario.
                     Luego de completar la información solicitada, recibirá nuestra recomendación de producto junto a la información técnica relacionada.
                 </p>
             </header>
