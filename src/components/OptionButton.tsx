@@ -17,8 +17,11 @@ export default function QuestionButton({ children, selected, icon, onClick, larg
 
     return <button
         onClick={onClick}
-        className={classNames("border-2 border-primary py-1.5 rounded-lg text-lg px-1 relative", {
+        className={classNames("border-2 border-primary py-1.5 rounded-lg px-1 relative", {
             'bg-primary text-white': selected,
+            'text-lg': children.length < 10,
+            'text-md': children.length >= 20,
+            'text-sm': children.length >= 30,
         })}
     >
         {icon && <Image src={`/icons/${icon}`} alt="Ícono" className={classNames("absolute left-0 h-[28px] pl-[8px]", {

@@ -28,7 +28,7 @@ export function ProductsList({ products, searchTitle }: Props) {
 
             return <div className="flex flex-row md:items-center md:justify-between border-b border-gray-200 py-4 last:border-none">
                 <div className="flex flex-row md:items-center gap-2">
-                    {product.picture && <img className="w-24 h-24 object-contain" src={product.picture} alt={product.name} />}
+                    {product.picture && <img className="w-24 h-24 object-cover" src={product.picture} alt={product.name} />}
                     <div className="flex flex-col">
                         <h2 className="font-medium max-w-[600px] text-stone-700" style={{fontSize: '12px'}}><span className="font-normal text-stone-500">CÓDIGO:</span> {product.code}</h2>
                         <h2 className="text-sm font-semibold max-w-[600px]">{product.text}</h2>

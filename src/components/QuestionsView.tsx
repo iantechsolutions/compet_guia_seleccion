@@ -26,27 +26,46 @@ type QuestionsViewProps = {
     initialUrl: URL,
     onShowInitialPage?: () => unknown,
     initialFilters?: SelectedFilters | null
+    setStarted?: (started: boolean) => unknown
 }
 
 export default function QuestionsViewWrapper(props: QuestionsViewProps) {
     const [started, setStarted] = useState(false)
     const [initialFilters, setInitialFilters] = useState<SelectedFilters | null>(null)
 
+    const { filters } = props
+
+    const flatQuestions = useMemo(() => {
+        return flattenQuestions(filters)
+    }, [filters])
+
+    const filtersLabelsByValueKey = useMemo(() => {
+        const map = new Map<string, string>()
+        for (const question of flatQuestions) {
+            question.values.forEach(value => {
+                map.set(value.key, value.label)
+            })
+        }
+        return map
+    }, [flatQuestions])
+
     function start(entry?: Entry) {
         setStarted(true)
         if (entry) {
             setInitialFilters(entry.filters)
+        } else {
+            setInitialFilters(null)
         }
     }
 
     if (!started) {
-        return <IntroductionScreen onClickStart={start} />
+        return <IntroductionScreen onClickStart={start} filtersLabelsByValueKey={filtersLabelsByValueKey} />
     }
 
-    return <QuestionsView {...props} onShowInitialPage={() => setStarted(false)} initialFilters={initialFilters} />
+    return <QuestionsView {...props} onShowInitialPage={() => setStarted(false)} initialFilters={initialFilters} setStarted={setStarted} />
 }
 
-export function QuestionsView({ filters, products, onShowInitialPage, initialFilters }: QuestionsViewProps) {
+export function QuestionsView({ filters, products, onShowInitialPage, initialFilters, setStarted }: QuestionsViewProps) {
     const flatQuestions = useMemo(() => {
         return flattenQuestions(filters)
     }, [filters])
@@ -187,6 +206,10 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
                 forward={canGoForward() ? forward : undefined}
                 back={canGoBack() ? back : undefined}
                 filtersLabelsByValueKey={filtersLabelsByValueKey}
+                resetToHome={() => {
+                    setSelectedFilters([])
+                    setStarted?.(false)
+                }}
             />
 
             <Question key={question.key} question={{

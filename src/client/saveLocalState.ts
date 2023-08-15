@@ -54,7 +54,9 @@ export function getEntries(): Entry[] {
             }
         }
     }
-    return entries;
+    return entries.sort((a, b) => {
+        return b.timestamp - a.timestamp;
+    });
 }
 
 export function deleteEntries() {
