@@ -31,7 +31,7 @@ export default function IntroductionScreen({ onClickStart, filtersLabelsByValueK
             <header className="container relative">
 
                 <a href="https://competsa.com/">
-                    <img src="/compet.png" alt="Compet S.A" className="h-[60px] mx-auto mt-[40px] md:mt-0 md:absolute md:top-0 md:right-0" />
+                    <img src="/compet.png" alt="Compet S.A" className="h-[60px] mx-auto mt-[40px] md:mt-0 md:absolute md:top-[-20px] md:right-0" />
                 </a>
 
                 <h1 className="text-2xl lg:text-5xl mt-10 mb-2 lg:mt-[80px] lg:mb-[20px] font-medium">Accesorios para cables subterráneos</h1>
