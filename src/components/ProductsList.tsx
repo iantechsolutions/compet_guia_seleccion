@@ -26,7 +26,7 @@ export function ProductsList({ products, searchTitle }: Props) {
 
             let mailUrl = `mailto:ventas@competsa.com?subject=Consulta sobre ${product.text} (${product.code})&body=${mailMessage}`
 
-            return <div className="flex flex-row md:items-center md:justify-between border-b border-gray-200 py-4 last:border-none">
+            return <div className="flex flex-row md:items-center md:justify-between py-2 text-left w-full border-l-4 px-2 border-stone-300 bg-stone-100 mb-5">
                 <div className="flex flex-row md:items-center gap-2">
                     {product.picture && <img className="w-24 h-24 object-cover" src={product.picture} alt={product.name} />}
                     <div className="flex flex-col">
