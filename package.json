@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@types/fast-html-parser": "^1.0.2",
-    "@types/xml2js": "^0.4.11"
+    "@types/xml2js": "^0.4.11",
+    "mssql": "^9.1.3"
   }
 }
