@@ -14,6 +14,7 @@ export const productSchema = z.object({
     TEXTO: z.string(),
     OBSERVACIONES: z.string().optional().nullable().transform((value) => {
         if(!value) return undefined
+        return value
     }),
     FECHA_MODI: z.string().optional(),
     "Incluido en Guia": z.string().optional().transform((value) => {
