@@ -88,8 +88,6 @@ export async function readQuestions() {
                 return 0
             })
 
-            console.log(question)
-
             return {
                 ...question,
                 type: "question",

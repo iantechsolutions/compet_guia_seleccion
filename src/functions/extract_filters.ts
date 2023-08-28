@@ -11,7 +11,6 @@ export function extractFilters(filters: RawDataStructureDefinition): ExtractedFi
 
 function _extractFilters(filters: RawDataStructureDefinition, transformedFilters: ExtractedFilters = {}) {
     filters.forEach(filter => {
-        // console.log('filters', filter.label, filter.type)
         if (filter.type === 'select') {
             const [key, values] = extractFilterOfTypeSelect(filter)
             transformedFilters[key] = {
