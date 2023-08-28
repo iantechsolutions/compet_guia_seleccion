@@ -9,9 +9,9 @@ const main = async () => {
 
         console.log("Se conectó a la base de datos")
 
-        const result = await sql.query`SELECT RTRIM(STA11.COD_ARTICU) as COD_ARTICU, STA11.DESC_ADIC, STA11.DESCRIPCIO, STA83.TEXTO, STA11.CAMPOS_ADICIONALES, STA11.FECHA_MODI
-FROM Compet_SA.dbo.STA11 STA11, Compet_SA.dbo.STA83 STA83
-WHERE STA11.COD_ARTICU = STA83.COD_ARTICU`
+        const result = await sql.query`SELECT STA11.COD_ARTICU, STA83.TEXTO, STA11.OBSERVACIONES, STA11.CAMPOS_ADICIONALES
+        FROM Compet_SA.dbo.STA11 STA11, Compet_SA.dbo.STA83 STA83
+        WHERE STA11.COD_ARTICU = STA83.COD_ARTICU`
 
         console.log("Se cargaron", result.recordset.length, "productos")
 
