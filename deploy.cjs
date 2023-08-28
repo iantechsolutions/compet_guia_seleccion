@@ -1,6 +1,6 @@
 const sql = require('mssql')
 
-async () => {
+const main = async () => {
     try {
         // make sure that any items are correctly URL encoded in the connection string
         await sql.connect('DSN=Axoft;Description=Axoft;UID=Axoft;PWD=Axoft;APP=Microsoft Office XP;WSID=GERNOTE;DATABASE=Compet_SA;Network=DBNM')
@@ -13,3 +13,5 @@ async () => {
         console.error(err)
     }
 }
+
+main()
