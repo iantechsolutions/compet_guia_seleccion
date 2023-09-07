@@ -27,6 +27,10 @@ export function shouldIgnoreQuestionOption(filteredProducts: TransformedProduct[
 export function shouldIgnoreQuestion(filteredProducts: TransformedProduct[], appliedFilters: SelectedFilters, nextQuestion: QuestionFilter) {
     const dependsOnKeys = Object.keys(nextQuestion.depends_on)
 
+    let options = nextQuestion.skippable ? 1 : 0
+
+    if(filteredProducts.length === 1) return true
+
     if(dependsOnKeys.length > 0) {
         for(const key of dependsOnKeys) {
             const filter = appliedFilters.find(filter => filter.key == key)
@@ -45,7 +49,10 @@ export function shouldIgnoreQuestion(filteredProducts: TransformedProduct[], app
 
     for(const value of nextQuestion.values) {
         if(!shouldIgnoreQuestionOption(filteredProducts,  nextQuestion, [value.key])) {
-            return false
+            options++
+            if(options > 1) {
+                return false
+            }
         }   
     }
     return true

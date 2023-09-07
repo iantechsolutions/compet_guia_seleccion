@@ -95,11 +95,5 @@ export function ProductsList({ products, searchTitle }: Props) {
                 </div>
             })}
         </div>
-
-        <div className="bg-stone-800 text-white grid grid-cols-1 py-6 sm:grid-cols-2 lg:grid-cols-3 gap-[20px]" style={{ padding: '22.5px' }}>
-            <ListItem title="(+54) 11 4044 4515" alt="WhatsApp" href="https://api.whatsapp.com/send/?phone=5491140444515&type=phone_number" src="whatsapp.png" />
-            <ListItem title="(+54) 11 4770 7438" alt="Atención al cliente" href="tel:+541147707438" src="phone-call-white.png" />
-            <ListItem title="ventas@competsa.com" alt="Correo electrónico" href="mailto:ventas@competsa.com" src="email-white.png" />
-        </div>
     </>
 }

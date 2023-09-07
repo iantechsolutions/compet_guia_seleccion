@@ -5,13 +5,14 @@ import type { QuestionFilter, SelectedFilters, TransformedFilters, TransformedPr
 import Button from "./Button";
 import { ProductsList } from "./ProductsList";
 import Question from "./Question";
-import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "preact/hooks";
 
 import NavKeysController, { NavKeyEvent, Action as NavKeyEventAction } from 'nav-keys'
 import QuestionsViewHeader from "./QuestionsViewHeader";
 import IntroductionScreen from "./IntroductionScreen";
 import { Entry, addEntry, getCurrentState, getEntries, updateCurrentState } from "../client/saveLocalState";
 import { mapSelectedFilters } from "../util/mapSelectedFilters";
+import Footer from "./Footer";
 
 const options = {
     allowHashchange: true,
@@ -192,12 +193,11 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
 
     const SHOW_MAX_PRODUCTS = 100
 
-    return <div
-        className="fixed top-0 left-0 w-full h-full bg-white"
-    >
-        <div className="absolute bottom-[64px] left-0 right-0 top-0 overflow-y-auto">
+    return <div>
 
+        <div className="fixed bottom-0 top-0 left-0 w-[0px]" id="height-snitcher" />
 
+        <div className="min-h-[100vh]" id="set-height">
             <QuestionsViewHeader
                 question={question}
                 isFirst={selectedFilters.length === 0}
@@ -233,11 +233,30 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
 
             </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 py-[12px] px-[20px] shadow-[2px_0_10px_-3px_rgba(0,0,0,0.3)] flex justify-between">
+
+        <div className="sticky bottom-0 left-0 right-0 py-[12px] px-[20px] shadow-[2px_0_10px_-3px_rgba(0,0,0,0.3)] flex justify-between">
             <Button onClick={() => back()}>
                 Anterior
             </Button>
-            <span></span>
+            <div className="flex items-center">
+                <button type="buttom" className="rounded-full border p-1 flex gap-2 items-center pr-2"
+
+                    onClick={() => {
+                        window.scrollTo({ top: 100000, behavior: 'smooth' })
+                    }}
+                >
+                    <img src="circle-info-solid.svg" className="min-w-[20px] w-[20px]" alt="Información" />
+                    <span className="text-xs uppercase font-medium">Contacto</span>
+                </button>
+            </div>
+            {isLast && <Button
+                onClick={() => {
+                    setSelectedFilters([])
+                    setStarted?.(false)
+                }}
+            >
+                Inicio
+            </Button>}
             {!isLast && <Button
                 disabled={!nextFilterValue}
                 onClick={() => {
@@ -247,5 +266,13 @@ export function QuestionsView({ filters, products, onShowInitialPage, initialFil
                 Siguiente
             </Button>}
         </div>
+
+
+        <Footer />
     </div>
+
+
+
+
+
 }

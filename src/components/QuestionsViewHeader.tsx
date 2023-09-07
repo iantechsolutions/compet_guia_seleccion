@@ -121,13 +121,14 @@ export default function QuestionsViewHeader({ question, isFirst, isLast, product
             </div>
             {divider}
             <div className="container mb-3">
+                <div className="relative">
+                    <button className="absolute top-0 right-0"
+                        onClick={resetToHome}
+                    >
+                        <Image src="/home2.png" className="h-[24px] sm:h-[28px] min-w-[24px] sm:min-w-[28px] mt-[4px]" />
+                    </button>
+                </div>
                 <h2 className="text-xl lg:text-2xl font-semibold">{productsCount === 1 ? `Se encontró un producto` : `Se encontraron ${productsCount} productos`}</h2>
-                <a href="/" onClick={(e) => {
-                    e.preventDefault()
-                    resetToHome()
-                }}>
-                    <u>Volver al principio</u>
-                </a>
             </div>
         </>
     }
