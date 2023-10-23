@@ -84,19 +84,19 @@ groups:
       - key: CA_CHECKBOX-GROUP_1684431809461
         label: Sección de cable derivado unipolar mm²
         depends_on:
-          CA_CHECKBOX-GROUP_1684413233368: CA_CCA_UNIPOLAR
+          CA_CHECKBOX-GROUP_1684413315284: CA_CAD_UNIPOLAR
       - key: CA_CHECKBOX-GROUP_1684431991660
         label: Sección de cable derivado bipolar mm²
         depends_on:
-          CA_CHECKBOX-GROUP_1684413233368: CA_BIPOLAR
+          CA_CHECKBOX-GROUP_1684413315284: CA_BIPOLAR
       - key: CA_CHECKBOX-GROUP_1684432348609
         label: Sección de cable derivado tripolar mm²
         depends_on:
-          CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR
+          CA_CHECKBOX-GROUP_1684413315284: CA_TRIPOLAR
       - key: CA_CHECKBOX-GROUP_1684432894891
         label: Sección de cable derivado tetrapolar mm²
         depends_on:
-          CA_CHECKBOX-GROUP_1684413233368: CA_TRIPOLAR__NEUTRO
+          CA_CHECKBOX-GROUP_1684413315284: CA_TRIPOLAR__NEUTRO
   - label: Conectores
     type: group
     questions:
