@@ -17,6 +17,8 @@ export function updateCurrentState(selectedFilters: SelectedFilters, title: stri
 
 export function getCurrentState(): Entry | null {
     // use localstorage
+    if(typeof window === 'undefined') return null;
+
     const current = localStorage.getItem("current");
     if (current) {
         return {
@@ -41,6 +43,9 @@ export function addEntry(selectedFilters: SelectedFilters, title: string) {
 
 export function getEntries(): Entry[] {
     const prefix = "entry_"
+
+    if(typeof window === 'undefined') return [];
+
     const entries: Entry[] = [];
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);

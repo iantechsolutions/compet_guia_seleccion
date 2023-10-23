@@ -1,4 +1,4 @@
-import { Entry, getCurrentState, getEntries } from "../client/saveLocalState";
+import { type Entry, getCurrentState, getEntries } from "../client/saveLocalState";
 import { mapSelectedFilters } from "../util/mapSelectedFilters";
 
 

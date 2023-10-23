@@ -5,12 +5,12 @@ import type { QuestionFilter, SelectedFilters, TransformedFilters, TransformedPr
 import Button from "./Button";
 import { ProductsList } from "./ProductsList";
 import Question from "./Question";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "preact/hooks";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 
-import NavKeysController, { NavKeyEvent, Action as NavKeyEventAction } from 'nav-keys'
+import NavKeysController, { type NavKeyEvent, Action as NavKeyEventAction } from 'nav-keys'
 import QuestionsViewHeader from "./QuestionsViewHeader";
 import IntroductionScreen from "./IntroductionScreen";
-import { Entry, addEntry, getCurrentState, getEntries, updateCurrentState } from "../client/saveLocalState";
+import { type Entry, addEntry, updateCurrentState } from "../client/saveLocalState";
 import { mapSelectedFilters } from "../util/mapSelectedFilters";
 import Footer from "./Footer";
 
