@@ -1,6 +1,10 @@
 // Transofrm raw filters (from "filters.json") to a better types and apply some changes if needed
 
-import type { QuestionFilter, QuestionsGroup, TransformedFilters } from "./types";
+import type {
+	QuestionFilter,
+	QuestionsGroup,
+	TransformedFilters,
+} from "./types";
 
 // Preguntas
 
@@ -27,17 +31,18 @@ import type { QuestionFilter, QuestionsGroup, TransformedFilters } from "./types
 //    17. Tipo de separable (select)
 //    18. Sistema de sujeción (select)
 
-
 export function flattenQuestions(filters: TransformedFilters) {
-    const flattenedFilters: FlatQuestionFilter[] = []
+	const flattenedFilters: FlatQuestionFilter[] = [];
 
-    for (const group of filters) {
-        group.questions.forEach(q => flattenedFilters.push({ ...q, parent: group, }))
-    }
+	for (const group of filters) {
+		group.questions.forEach((q) =>
+			flattenedFilters.push({ ...q, parent: group }),
+		);
+	}
 
-    return flattenedFilters
+	return flattenedFilters;
 }
 
 export interface FlatQuestionFilter extends QuestionFilter {
-    parent: QuestionsGroup
+	parent: QuestionsGroup;
 }
