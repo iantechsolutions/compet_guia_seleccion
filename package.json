@@ -27,6 +27,7 @@
         "@biomejs/biome": "1.8.3",
         "@types/fast-html-parser": "^1.0.3",
         "@types/xml2js": "^0.4.14",
-        "mssql": "11.0.1"
+        "mssql": "11.0.1",
+        "typescript": "^5.5.4"
     }
 }
