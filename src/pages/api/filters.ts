@@ -4,9 +4,5 @@ import { readFilters } from '../../util/provider'
 export const GET: APIRoute = async function get({ url }) {
     const filters = await readFilters()
 
-    return {
-        body: JSON.stringify({
-            filters
-        })
-    }
+    return Response.json({ filters })
 }
