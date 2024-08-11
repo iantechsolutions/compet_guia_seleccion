@@ -1,951 +1,951 @@
 [
-	{
-		"type": "checkbox-group",
-		"label": "Area Ingeniería",
-		"name": "CA_CHECKBOX-GROUP_1673955629425",
-		"values": [
-			{
-				"label": "Conforme Ingeniería",
-				"value": "CA_CONFORME_INGENIERA",
-				"selected": true,
-				"type": "checkbox"
-			}
-		]
-	},
-	{
-		"type": "checkbox-group",
-		"label": "Guia de selección",
-		"name": "CA_CHECKBOX-GROUP_1684438404084",
-		"values": [
-			{
-				"label": "Mostrar en Guía",
-				"value": "CA_MOSTRAR_EN_GUA",
-				"type": "checkbox"
-			}
-		]
-	},
-	{
-		"type": "grouptabsheet",
-		"label": "Solapas",
-		"tabsdata": [
-			[
-				{
-					"type": "select",
-					"label": "Nivel de tensión",
-					"name": "CA_NIVEL_DE_TENSIN",
-					"values": [
-						{
-							"label": "Menos de 1kV (baja tensión)",
-							"value": "Menos de 1kV (baja tensión)"
-						},
-						{
-							"label": "5 a 8 kV",
-							"value": "5 a 8 kV"
-						},
-						{
-							"label": "10 a 15 kV",
-							"value": "10 a 15 kV"
-						},
-						{
-							"label": "20 a 24 kV",
-							"value": "20 a 24 kV"
-						},
-						{
-							"label": "30 a 36 kV",
-							"value": "30 a 36 kV"
-						}
-					]
-				},
-				{
-					"type": "select",
-					"label": "Tipo de accesorio",
-					"name": "CA_TIPO_DE_ACCESORIO",
-					"values": [
-						{
-							"label": "Empalme Recto",
-							"value": "Empalme Recto"
-						},
-						{
-							"label": "Empalme derivación",
-							"value": "Empalme derivación"
-						},
-						{
-							"label": "Terminación",
-							"value": "Terminación"
-						},
-						{
-							"label": "Separable/Enchufable\n(norma IEC)",
-							"value": "Separable/Enchufable (norma IEC)"
-						},
-						{
-							"label": "Empalme para\nbombas sumergibles",
-							"value": "Empalme para bombas sumergibles"
-						}
-					]
-				},
-				{
-					"type": "select",
-					"label": "Tecnología principal",
-					"name": "CA_TECNOLOGA_PRINCIPAL",
-					"values": [
-						{
-							"label": "Termocontraíble",
-							"value": "Termocontraíble"
-						},
-						{
-							"label": "Contraíble en frío",
-							"value": "Contraíble en frío"
-						},
-						{
-							"label": "Deslizable (push-on)",
-							"value": "Deslizable (push-on)"
-						},
-						{
-							"label": "Molde con resina reentrable",
-							"value": "Molde con resina reentrable"
-						},
-						{
-							"label": "Molde con resina no reentrable",
-							"value": "Molde con resina no reentrable"
-						}
-					]
-				},
-				{
-					"type": "checkbox-group",
-					"label": "Uso Interior/Exterior",
-					"name": "CA_CHECKBOX-GROUP_1684438454148",
-					"values": [
-						{
-							"label": "Uso Interior",
-							"value": "CA_CAT_USO_INTERIOR",
-							"type": "checkbox"
-						},
-						{
-							"label": "Uso Exterior",
-							"value": "CA_CAT_USO_EXTERIOR",
-							"type": "checkbox"
-						}
-					]
-				}
-			],
-			[
-				{
-					"type": "checkbox-group",
-					"label": "Número de fases del cable principal",
-					"name": "CA_CHECKBOX-GROUP_1684413233368",
-					"values": [
-						{
-							"label": "Bipolar",
-							"value": "CA_BIPOLAR",
-							"type": "checkbox"
-						},
-						{
-							"label": "Tripolar",
-							"value": "CA_TRIPOLAR",
-							"type": "checkbox"
-						},
-						{
-							"label": "Tripolar + Neutro",
-							"value": "CA_TRIPOLAR__NEUTRO",
-							"type": "checkbox"
-						},
-						{
-							"label": "Pentapolar",
-							"value": "CA_PENTAPOLAR",
-							"type": "checkbox"
-						},
-						{
-							"label": "Unipolar",
-							"value": "CA_CCA_UNIPOLAR",
-							"type": "checkbox"
-						}
-					]
-				},
-				{
-					"type": "checkbox-group",
-					"label": "Tipo de Pantalla de la/s fase/s",
-					"name": "CA_CHECKBOX-GROUP_1684413076075",
-					"values": [
-						{
-							"label": "Alambres",
-							"value": "CA_ALAMBRES",
-							"type": "checkbox"
-						},
-						{
-							"label": "Cintas o Alambres",
-							"value": "CA_CINTAS_O_ALAMBRES",
-							"type": "checkbox"
-						}
-					]
-				},
-				{
-					"type": "row",
-					"label": "Disposición vertical",
-					"columns": 4,
-					"rowdata": [
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Sección de cable ppal. unipolar",
-								"name": "CA_CHECKBOX-GROUP_1684430004592",
-								"values": [
-									{
-										"label": "1x4",
-										"value": "CA_1X4",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x6",
-										"value": "CA_1X6",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x10",
-										"value": "CA_1X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x16",
-										"value": "CA_1X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x25",
-										"value": "CA_1X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x35",
-										"value": "CA_1X35",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x50",
-										"value": "CA_1X50",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x70",
-										"value": "CA_1X70",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x95",
-										"value": "CA_1X95",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x120",
-										"value": "CA_1X120",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x150",
-										"value": "CA_1X150",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x185",
-										"value": "CA_1X185",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x240",
-										"value": "CA_1X240",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x300",
-										"value": "CA_1X300",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x400",
-										"value": "CA_1X400",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x630",
-										"value": "CA_1X630",
-										"type": "checkbox"
-									},
-									{
-										"label": "1x800",
-										"value": "CA_1X800",
-										"type": "checkbox"
-									}
-								]
-							}
-						],
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable ppal. bipolar (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684430443116",
-								"values": [
-									{
-										"label": "2x1,5",
-										"value": "CA_2x15",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x2,5",
-										"value": "CA_2x25",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x4",
-										"value": "CA_2x4",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x6",
-										"value": "CA_2x6",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x10",
-										"value": "CA_2X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x16",
-										"value": "CA_2X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x25",
-										"value": "CA_2X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "2x35",
-										"value": "CA_2X35",
-										"type": "checkbox"
-									}
-								]
-							}
-						],
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable ppal. tripolar (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684430969197",
-								"values": [
-									{
-										"label": "3x1,5",
-										"value": "CA_3x15",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x2x5",
-										"value": "CA_3x2X5",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x4",
-										"value": "CA_3x4",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x6",
-										"value": "CA_3x6",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x10",
-										"value": "CA_3X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x16",
-										"value": "CA_3X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x25",
-										"value": "CA_3X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x35",
-										"value": "CA_3X35",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x50",
-										"value": "CA_3X50",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x70",
-										"value": "CA_3X70",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x95",
-										"value": "CA_3X95",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x120",
-										"value": "CA_3X120",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x150",
-										"value": "CA_3X150",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x185",
-										"value": "CA_3X185",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x240",
-										"value": "CA_3X240",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x300",
-										"value": "CA_3X300",
-										"type": "checkbox"
-									}
-								]
-							}
-						],
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable ppal. tripolar con neutro (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684431095631",
-								"values": [
-									{
-										"label": "4x1,5",
-										"value": "CA_4x15",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x2,5",
-										"value": "CA_4x25",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x4",
-										"value": "CA_4x4",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x6",
-										"value": "CA_4x6",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x10",
-										"value": "CA_4X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x16",
-										"value": "CA_4X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x25/16",
-										"value": "CA_3X2516",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x35/16",
-										"value": "CA_3X3516",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x50/25",
-										"value": "CA_3X5025",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x70/35",
-										"value": "CA_3X7035",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x95/50",
-										"value": "CA_3X9550",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x120/70",
-										"value": "CA_3X12070",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x150/70",
-										"value": "CA_3X15070",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x185/95",
-										"value": "CA_3X18595",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x240/120",
-										"value": "CA_3X240120",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x300/150",
-										"value": "CA_3X300150",
-										"type": "checkbox"
-									}
-								]
-							}
-						]
-					]
-				}
-			],
-			[
-				{
-					"type": "checkbox-group",
-					"label": "Cantidad de fases del cable derivado",
-					"name": "CA_CHECKBOX-GROUP_1684413315284",
-					"values": [
-						{
-							"label": "Unipolar",
-							"value": "CA_CAD_UNIPOLAR",
-							"selected": true,
-							"type": "checkbox"
-						},
-						{
-							"label": "Bipolar",
-							"value": "CA_CAD_BIPOLAR",
-							"type": "checkbox"
-						},
-						{
-							"label": "Tripolar",
-							"value": "CA_CAD_TRIPOLAR",
-							"type": "checkbox"
-						},
-						{
-							"label": "Tripolar + Neutro",
-							"value": "CA_CAD_TRIPOLAR__NEUTRO",
-							"type": "checkbox"
-						}
-					]
-				},
-				{
-					"type": "row",
-					"label": "Disposición vertical",
-					"columns": 4,
-					"rowdata": [
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable derivado unipolar (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684431809461",
-								"values": [
-									{
-										"label": "1 x 4",
-										"value": "CA_CAQ_1X4",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 6",
-										"value": "CA_CAQ_1X6",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 10",
-										"value": "CA_CAQ_1X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 16",
-										"value": "CA_CAQ_1X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 25",
-										"value": "CA_CAQ_1X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 35",
-										"value": "CA_CAQ_1X35",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 50",
-										"value": "CA_CAQ_1X50",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 70",
-										"value": "CA_CAQ_1X70",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 95",
-										"value": "CA_CAQ_1X95",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 120",
-										"value": "CA_CAQ_1X120",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 150",
-										"value": "CA_CAQ_1X150",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 185",
-										"value": "CA_CAQ_1X185",
-										"type": "checkbox"
-									},
-									{
-										"label": "1 x 240",
-										"value": "CA_CAQ_1X240",
-										"type": "checkbox"
-									}
-								]
-							}
-						],
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable derivado bipolar (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684431991660",
-								"values": [
-									{
-										"label": "2 x 1,5",
-										"value": "CA_WCA_2X15",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 2,5",
-										"value": "CA_WCA_2X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 4",
-										"value": "CA_WCA_2X4",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 6",
-										"value": "CA_WCA_2X6",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 10",
-										"value": "CA_WCA_2X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 16",
-										"value": "CA_WCA_2X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 25",
-										"value": "CA_SCA_2X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "2 x 35",
-										"value": "CA_SCA_2X35",
-										"type": "checkbox"
-									}
-								]
-							}
-						],
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable derivado tripolar (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684432348609",
-								"values": [
-									{
-										"label": "3x1,5",
-										"value": "CA_ACA_3X15",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x2,5",
-										"value": "CA_ACA_3X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x4",
-										"value": "CA_ACA_3X4",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x6",
-										"value": "CA_ACA_3X6",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x10",
-										"value": "CA_ACA_3X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x16",
-										"value": "CA_ACA_3X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x25",
-										"value": "CA_ZCA_3X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x35",
-										"value": "CA_ZCA_3X35",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x50",
-										"value": "CA_ZCA_3X50",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x70",
-										"value": "CA_ZCA_3X70",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x95",
-										"value": "CA_ZCA_3X95",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x120",
-										"value": "CA_ZCA_3X120",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x150",
-										"value": "CA_ZCA_3X150",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x185",
-										"value": "CA_ZCA_3X185",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x240",
-										"value": "CA_ZCA_3X240",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x300",
-										"value": "CA_ZCA_3X300",
-										"type": "checkbox"
-									}
-								]
-							}
-						],
-						[
-							{
-								"type": "checkbox-group",
-								"label": "Cable derivado tetrapolar (mm2)",
-								"name": "CA_CHECKBOX-GROUP_1684432894891",
-								"values": [
-									{
-										"label": "4x1,5",
-										"value": "CA_4X15",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x2,5",
-										"value": "CA_XCA_4X25",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x4",
-										"value": "CA_XCA_4X4",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x6",
-										"value": "CA_XCA_4X6",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x10",
-										"value": "CA_XCA_4X10",
-										"type": "checkbox"
-									},
-									{
-										"label": "4x16",
-										"value": "CA_XCA_4X16",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x25/16",
-										"value": "CA_XCA_3X2516",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x35/16",
-										"value": "CA_XCA_3X3516",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x50/25",
-										"value": "CA_XCA_3X5025",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x70/35",
-										"value": "CA_XCA_3X7035",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x95/50",
-										"value": "CA_XCA_3X9550",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x120/70",
-										"value": "CA_XCA_3X12070",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x150/70",
-										"value": "CA_XCA_3X15070",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x185/95",
-										"value": "CA_XCA_3X18595",
-										"type": "checkbox"
-									},
-									{
-										"label": "3x240/120",
-										"value": "CA_XCA_3X240120",
-										"type": "checkbox"
-									}
-								]
-							}
-						]
-					]
-				}
-			],
-			[
-				{
-					"type": "checkbox-group",
-					"label": "Incluye Conectores",
-					"name": "INCLUYE_CONECTORES",
-					"values": [
-						{
-							"label": "A tornillo fusible",
-							"value": "CA_A_TORNILLO_FUSIBLE",
-							"type": "checkbox"
-						},
-						{
-							"label": "A compresión",
-							"value": "CA_A_COMPRESIN",
-							"type": "checkbox"
-						},
-						{
-							"label": "A a perforación",
-							"value": "CA_A_PERFORMACIN",
-							"type": "checkbox"
-						}
-					]
-				}
-			],
-			[
-				{
-					"type": "select",
-					"label": "Interfaz / Corriente nominal de operación",
-					"name": "CA_INTERFAZ__CORRIENTE_NOMINAL_DE_OPERACIN",
-					"values": [
-						{
-							"label": "A / 250A",
-							"value": "A / 250A"
-						},
-						{
-							"label": "B / 400A",
-							"value": "B / 400A"
-						},
-						{
-							"label": "C1-C2 / 630A",
-							"value": "C1-C2 / 630A"
-						},
-						{
-							"label": "C1-C2 / 1250A",
-							"value": "C1-C2 / 1250A"
-						}
-					]
-				},
-				{
-					"type": "select",
-					"label": "Tipo de separable",
-					"name": "CA_TIPO_DE_SEPARABLE",
-					"values": [
-						{
-							"label": "T Asimétrica",
-							"value": "T Asimétrica"
-						},
-						{
-							"label": "Codo",
-							"value": "Codo"
-						},
-						{
-							"label": "Conector de acoplamiento",
-							"value": "Conector de acoplamiento"
-						},
-						{
-							"label": "Enchufe recto",
-							"value": "Enchufe recto"
-						}
-					]
-				},
-				{
-					"type": "select",
-					"label": "Sistema de sujeción",
-					"name": "CA_SISTEMA_DE_SUJECIN",
-					"values": [
-						{
-							"label": "Abrazadera",
-							"value": "Abrazadera"
-						},
-						{
-							"label": "Brida metálica",
-							"value": "Brida metálica"
-						}
-					]
-				}
-			]
-		],
-		"values": [
-			{
-				"label": "Del producto",
-				"value": "Del producto",
-				"selected": true
-			},
-			{
-				"label": "Del cable principal",
-				"value": "Del cable principal"
-			},
-			{
-				"label": "Del cable derivado",
-				"value": "Del cable derivado"
-			},
-			{
-				"label": "Enchufables",
-				"value": "Enchufables"
-			}
-		]
-	}
+    {
+        "type": "checkbox-group",
+        "label": "Area Ingeniería",
+        "name": "CA_CHECKBOX-GROUP_1673955629425",
+        "values": [
+            {
+                "label": "Conforme Ingeniería",
+                "value": "CA_CONFORME_INGENIERA",
+                "selected": true,
+                "type": "checkbox"
+            }
+        ]
+    },
+    {
+        "type": "checkbox-group",
+        "label": "Guia de selección",
+        "name": "CA_CHECKBOX-GROUP_1684438404084",
+        "values": [
+            {
+                "label": "Mostrar en Guía",
+                "value": "CA_MOSTRAR_EN_GUA",
+                "type": "checkbox"
+            }
+        ]
+    },
+    {
+        "type": "grouptabsheet",
+        "label": "Solapas",
+        "tabsdata": [
+            [
+                {
+                    "type": "select",
+                    "label": "Nivel de tensión",
+                    "name": "CA_NIVEL_DE_TENSIN",
+                    "values": [
+                        {
+                            "label": "Menos de 1kV (baja tensión)",
+                            "value": "Menos de 1kV (baja tensión)"
+                        },
+                        {
+                            "label": "5 a 8 kV",
+                            "value": "5 a 8 kV"
+                        },
+                        {
+                            "label": "10 a 15 kV",
+                            "value": "10 a 15 kV"
+                        },
+                        {
+                            "label": "20 a 24 kV",
+                            "value": "20 a 24 kV"
+                        },
+                        {
+                            "label": "30 a 36 kV",
+                            "value": "30 a 36 kV"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "label": "Tipo de accesorio",
+                    "name": "CA_TIPO_DE_ACCESORIO",
+                    "values": [
+                        {
+                            "label": "Empalme Recto",
+                            "value": "Empalme Recto"
+                        },
+                        {
+                            "label": "Empalme derivación",
+                            "value": "Empalme derivación"
+                        },
+                        {
+                            "label": "Terminación",
+                            "value": "Terminación"
+                        },
+                        {
+                            "label": "Separable/Enchufable\n(norma IEC)",
+                            "value": "Separable/Enchufable (norma IEC)"
+                        },
+                        {
+                            "label": "Empalme para\nbombas sumergibles",
+                            "value": "Empalme para bombas sumergibles"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "label": "Tecnología principal",
+                    "name": "CA_TECNOLOGA_PRINCIPAL",
+                    "values": [
+                        {
+                            "label": "Termocontraíble",
+                            "value": "Termocontraíble"
+                        },
+                        {
+                            "label": "Contraíble en frío",
+                            "value": "Contraíble en frío"
+                        },
+                        {
+                            "label": "Deslizable (push-on)",
+                            "value": "Deslizable (push-on)"
+                        },
+                        {
+                            "label": "Molde con resina reentrable",
+                            "value": "Molde con resina reentrable"
+                        },
+                        {
+                            "label": "Molde con resina no reentrable",
+                            "value": "Molde con resina no reentrable"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox-group",
+                    "label": "Uso Interior/Exterior",
+                    "name": "CA_CHECKBOX-GROUP_1684438454148",
+                    "values": [
+                        {
+                            "label": "Uso Interior",
+                            "value": "CA_CAT_USO_INTERIOR",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Uso Exterior",
+                            "value": "CA_CAT_USO_EXTERIOR",
+                            "type": "checkbox"
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "type": "checkbox-group",
+                    "label": "Número de fases del cable principal",
+                    "name": "CA_CHECKBOX-GROUP_1684413233368",
+                    "values": [
+                        {
+                            "label": "Bipolar",
+                            "value": "CA_BIPOLAR",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Tripolar",
+                            "value": "CA_TRIPOLAR",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Tripolar + Neutro",
+                            "value": "CA_TRIPOLAR__NEUTRO",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Pentapolar",
+                            "value": "CA_PENTAPOLAR",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Unipolar",
+                            "value": "CA_CCA_UNIPOLAR",
+                            "type": "checkbox"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox-group",
+                    "label": "Tipo de Pantalla de la/s fase/s",
+                    "name": "CA_CHECKBOX-GROUP_1684413076075",
+                    "values": [
+                        {
+                            "label": "Alambres",
+                            "value": "CA_ALAMBRES",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Cintas o Alambres",
+                            "value": "CA_CINTAS_O_ALAMBRES",
+                            "type": "checkbox"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "label": "Disposición vertical",
+                    "columns": 4,
+                    "rowdata": [
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Sección de cable ppal. unipolar",
+                                "name": "CA_CHECKBOX-GROUP_1684430004592",
+                                "values": [
+                                    {
+                                        "label": "1x4",
+                                        "value": "CA_1X4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x6",
+                                        "value": "CA_1X6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x10",
+                                        "value": "CA_1X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x16",
+                                        "value": "CA_1X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x25",
+                                        "value": "CA_1X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x35",
+                                        "value": "CA_1X35",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x50",
+                                        "value": "CA_1X50",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x70",
+                                        "value": "CA_1X70",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x95",
+                                        "value": "CA_1X95",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x120",
+                                        "value": "CA_1X120",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x150",
+                                        "value": "CA_1X150",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x185",
+                                        "value": "CA_1X185",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x240",
+                                        "value": "CA_1X240",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x300",
+                                        "value": "CA_1X300",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x400",
+                                        "value": "CA_1X400",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x630",
+                                        "value": "CA_1X630",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1x800",
+                                        "value": "CA_1X800",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable ppal. bipolar (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684430443116",
+                                "values": [
+                                    {
+                                        "label": "2x1,5",
+                                        "value": "CA_2x15",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x2,5",
+                                        "value": "CA_2x25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x4",
+                                        "value": "CA_2x4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x6",
+                                        "value": "CA_2x6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x10",
+                                        "value": "CA_2X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x16",
+                                        "value": "CA_2X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x25",
+                                        "value": "CA_2X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2x35",
+                                        "value": "CA_2X35",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable ppal. tripolar (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684430969197",
+                                "values": [
+                                    {
+                                        "label": "3x1,5",
+                                        "value": "CA_3x15",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x2x5",
+                                        "value": "CA_3x2X5",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x4",
+                                        "value": "CA_3x4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x6",
+                                        "value": "CA_3x6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x10",
+                                        "value": "CA_3X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x16",
+                                        "value": "CA_3X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x25",
+                                        "value": "CA_3X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x35",
+                                        "value": "CA_3X35",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x50",
+                                        "value": "CA_3X50",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x70",
+                                        "value": "CA_3X70",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x95",
+                                        "value": "CA_3X95",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x120",
+                                        "value": "CA_3X120",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x150",
+                                        "value": "CA_3X150",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x185",
+                                        "value": "CA_3X185",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x240",
+                                        "value": "CA_3X240",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x300",
+                                        "value": "CA_3X300",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable ppal. tripolar con neutro (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684431095631",
+                                "values": [
+                                    {
+                                        "label": "4x1,5",
+                                        "value": "CA_4x15",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x2,5",
+                                        "value": "CA_4x25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x4",
+                                        "value": "CA_4x4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x6",
+                                        "value": "CA_4x6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x10",
+                                        "value": "CA_4X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x16",
+                                        "value": "CA_4X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x25/16",
+                                        "value": "CA_3X2516",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x35/16",
+                                        "value": "CA_3X3516",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x50/25",
+                                        "value": "CA_3X5025",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x70/35",
+                                        "value": "CA_3X7035",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x95/50",
+                                        "value": "CA_3X9550",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x120/70",
+                                        "value": "CA_3X12070",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x150/70",
+                                        "value": "CA_3X15070",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x185/95",
+                                        "value": "CA_3X18595",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x240/120",
+                                        "value": "CA_3X240120",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x300/150",
+                                        "value": "CA_3X300150",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            ],
+            [
+                {
+                    "type": "checkbox-group",
+                    "label": "Cantidad de fases del cable derivado",
+                    "name": "CA_CHECKBOX-GROUP_1684413315284",
+                    "values": [
+                        {
+                            "label": "Unipolar",
+                            "value": "CA_CAD_UNIPOLAR",
+                            "selected": true,
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Bipolar",
+                            "value": "CA_CAD_BIPOLAR",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Tripolar",
+                            "value": "CA_CAD_TRIPOLAR",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "Tripolar + Neutro",
+                            "value": "CA_CAD_TRIPOLAR__NEUTRO",
+                            "type": "checkbox"
+                        }
+                    ]
+                },
+                {
+                    "type": "row",
+                    "label": "Disposición vertical",
+                    "columns": 4,
+                    "rowdata": [
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable derivado unipolar (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684431809461",
+                                "values": [
+                                    {
+                                        "label": "1 x 4",
+                                        "value": "CA_CAQ_1X4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 6",
+                                        "value": "CA_CAQ_1X6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 10",
+                                        "value": "CA_CAQ_1X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 16",
+                                        "value": "CA_CAQ_1X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 25",
+                                        "value": "CA_CAQ_1X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 35",
+                                        "value": "CA_CAQ_1X35",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 50",
+                                        "value": "CA_CAQ_1X50",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 70",
+                                        "value": "CA_CAQ_1X70",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 95",
+                                        "value": "CA_CAQ_1X95",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 120",
+                                        "value": "CA_CAQ_1X120",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 150",
+                                        "value": "CA_CAQ_1X150",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 185",
+                                        "value": "CA_CAQ_1X185",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "1 x 240",
+                                        "value": "CA_CAQ_1X240",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable derivado bipolar (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684431991660",
+                                "values": [
+                                    {
+                                        "label": "2 x 1,5",
+                                        "value": "CA_WCA_2X15",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 2,5",
+                                        "value": "CA_WCA_2X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 4",
+                                        "value": "CA_WCA_2X4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 6",
+                                        "value": "CA_WCA_2X6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 10",
+                                        "value": "CA_WCA_2X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 16",
+                                        "value": "CA_WCA_2X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 25",
+                                        "value": "CA_SCA_2X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "2 x 35",
+                                        "value": "CA_SCA_2X35",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable derivado tripolar (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684432348609",
+                                "values": [
+                                    {
+                                        "label": "3x1,5",
+                                        "value": "CA_ACA_3X15",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x2,5",
+                                        "value": "CA_ACA_3X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x4",
+                                        "value": "CA_ACA_3X4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x6",
+                                        "value": "CA_ACA_3X6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x10",
+                                        "value": "CA_ACA_3X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x16",
+                                        "value": "CA_ACA_3X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x25",
+                                        "value": "CA_ZCA_3X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x35",
+                                        "value": "CA_ZCA_3X35",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x50",
+                                        "value": "CA_ZCA_3X50",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x70",
+                                        "value": "CA_ZCA_3X70",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x95",
+                                        "value": "CA_ZCA_3X95",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x120",
+                                        "value": "CA_ZCA_3X120",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x150",
+                                        "value": "CA_ZCA_3X150",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x185",
+                                        "value": "CA_ZCA_3X185",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x240",
+                                        "value": "CA_ZCA_3X240",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x300",
+                                        "value": "CA_ZCA_3X300",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ],
+                        [
+                            {
+                                "type": "checkbox-group",
+                                "label": "Cable derivado tetrapolar (mm2)",
+                                "name": "CA_CHECKBOX-GROUP_1684432894891",
+                                "values": [
+                                    {
+                                        "label": "4x1,5",
+                                        "value": "CA_4X15",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x2,5",
+                                        "value": "CA_XCA_4X25",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x4",
+                                        "value": "CA_XCA_4X4",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x6",
+                                        "value": "CA_XCA_4X6",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x10",
+                                        "value": "CA_XCA_4X10",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "4x16",
+                                        "value": "CA_XCA_4X16",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x25/16",
+                                        "value": "CA_XCA_3X2516",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x35/16",
+                                        "value": "CA_XCA_3X3516",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x50/25",
+                                        "value": "CA_XCA_3X5025",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x70/35",
+                                        "value": "CA_XCA_3X7035",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x95/50",
+                                        "value": "CA_XCA_3X9550",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x120/70",
+                                        "value": "CA_XCA_3X12070",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x150/70",
+                                        "value": "CA_XCA_3X15070",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x185/95",
+                                        "value": "CA_XCA_3X18595",
+                                        "type": "checkbox"
+                                    },
+                                    {
+                                        "label": "3x240/120",
+                                        "value": "CA_XCA_3X240120",
+                                        "type": "checkbox"
+                                    }
+                                ]
+                            }
+                        ]
+                    ]
+                }
+            ],
+            [
+                {
+                    "type": "checkbox-group",
+                    "label": "Incluye Conectores",
+                    "name": "INCLUYE_CONECTORES",
+                    "values": [
+                        {
+                            "label": "A tornillo fusible",
+                            "value": "CA_A_TORNILLO_FUSIBLE",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "A compresión",
+                            "value": "CA_A_COMPRESIN",
+                            "type": "checkbox"
+                        },
+                        {
+                            "label": "A a perforación",
+                            "value": "CA_A_PERFORMACIN",
+                            "type": "checkbox"
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "type": "select",
+                    "label": "Interfaz / Corriente nominal de operación",
+                    "name": "CA_INTERFAZ__CORRIENTE_NOMINAL_DE_OPERACIN",
+                    "values": [
+                        {
+                            "label": "A / 250A",
+                            "value": "A / 250A"
+                        },
+                        {
+                            "label": "B / 400A",
+                            "value": "B / 400A"
+                        },
+                        {
+                            "label": "C1-C2 / 630A",
+                            "value": "C1-C2 / 630A"
+                        },
+                        {
+                            "label": "C1-C2 / 1250A",
+                            "value": "C1-C2 / 1250A"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "label": "Tipo de separable",
+                    "name": "CA_TIPO_DE_SEPARABLE",
+                    "values": [
+                        {
+                            "label": "T Asimétrica",
+                            "value": "T Asimétrica"
+                        },
+                        {
+                            "label": "Codo",
+                            "value": "Codo"
+                        },
+                        {
+                            "label": "Conector de acoplamiento",
+                            "value": "Conector de acoplamiento"
+                        },
+                        {
+                            "label": "Enchufe recto",
+                            "value": "Enchufe recto"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "label": "Sistema de sujeción",
+                    "name": "CA_SISTEMA_DE_SUJECIN",
+                    "values": [
+                        {
+                            "label": "Abrazadera",
+                            "value": "Abrazadera"
+                        },
+                        {
+                            "label": "Brida metálica",
+                            "value": "Brida metálica"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "values": [
+            {
+                "label": "Del producto",
+                "value": "Del producto",
+                "selected": true
+            },
+            {
+                "label": "Del cable principal",
+                "value": "Del cable principal"
+            },
+            {
+                "label": "Del cable derivado",
+                "value": "Del cable derivado"
+            },
+            {
+                "label": "Enchufables",
+                "value": "Enchufables"
+            }
+        ]
+    }
 ]

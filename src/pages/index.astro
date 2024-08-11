@@ -1,13 +1,13 @@
 ---
-import QuestionsView from "../components/QuestionsView";
-import Layout from "../layouts/Layout.astro";
-import { readProductsTransformed, readQuestions } from "../util/provider";
+import QuestionsView from '../components/QuestionsView'
+import Layout from '../layouts/Layout.astro'
+import { readProductsTransformed, readQuestions } from '../util/provider'
 // export const prerender = true
 
-const questions = await readQuestions();
-const products = await readProductsTransformed();
+const questions = await readQuestions()
+const products = await readProductsTransformed()
 
-const url = Astro.url;
+const url = Astro.url
 ---
 
 <Layout title="Accesorios para cables subterráneos">
