@@ -25,6 +25,7 @@ export async function readProducts() {
 
     // Parse products database and convert it to the correct type
     let products = productsSchema.parse(JSON.parse(data))
+    products = products.filter(x=>x.shouldInclude)
 
     // Get images from products
     products = await Promise.all(

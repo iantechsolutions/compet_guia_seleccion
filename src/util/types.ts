@@ -22,13 +22,13 @@ export const productSchema = z
                 return value
             }),
         FECHA_MODI: z.string().optional(),
-        'Incluido en Guia': z
-            .string()
-            .optional()
-            .transform((value) => {
-                if (!value) return true
-                return value?.toLowerCase() === 'si'
-            }),
+        // 'Incluido en Guia': z
+        //     .string()
+        //     .optional()
+        //     .transform((value) => {
+        //         if (!value) return true
+        //         return value?.toLowerCase() === 'si'
+        //     }),
         CAMPOS_ADICIONALES: z
             .string()
             .optional()
@@ -41,13 +41,12 @@ export const productSchema = z
     })
     .transform((value) => {
         const additionalFields = value.CAMPOS_ADICIONALES
-
         for (const key in additionalFields) {
+
             additionalFields[key] = additionalFields[key].toString()
         }
-
         return {
-            shouldInclude: value['Incluido en Guia'],
+            shouldInclude: additionalFields["CA_MOSTRAR_EN_GUA"].toString().toLowerCase() === "s",
             code: value.COD_ARTICU,
             name: value.DESCRIPCIO,
             description: value.TEXTO,
